@@ -2,10 +2,10 @@
   <section>
     <div :class="$style.panel">
       <app-header />
-      <!-- <div :class="$style.panelBody">
+      <div :class="$style.panelBody">
         <chat-groups-wrapper />
         <chat-messages-empty />
-      </div> -->
+      </div>
     </div>
   </section>
 </template>
@@ -23,8 +23,8 @@ export default {
      * @see {@link https://vuejs.org/v2/guide/components-dynamic-async.html|Async Components}
      */
     AppHeader: () => import("@/desktop/components/AppHeader"),
-    // ChatGroupsWrapper: () => import("@/components/groups/ChatGroupsWrapper"),
-    // ChatMessagesEmpty: () => import("@/components/messages/ChatMessagesEmpty"),
+    ChatGroupsWrapper: () => import("@/desktop/components/groups/ChatGroupsWrapper"),
+    ChatMessagesEmpty: () => import("@/desktop/components/messages/ChatMessagesEmpty"),
   }
 };
 </script>
