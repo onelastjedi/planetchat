@@ -239,9 +239,10 @@ export default new Vuex.Store({
     /**
      * UI related mutations
      */
-    // SET_LOADING_STATE: (state, loading) => {
-    //   state.isDataLoading = loading;
-    // },
+    SET_LOADING_STATE: (state, loading) => {
+      state.isDataLoading = loading;
+    },
+
     SET_POPUPS_VISIBILITY: ({ popups }, options) => {
       options.forEach(popup => {
         const name = Object.getOwnPropertyNames(popup)[0];
@@ -584,7 +585,7 @@ export default new Vuex.Store({
       { commit, getters: { getGroupById, isMessageExist } },
       { gid, m }
     ) => {
-      // commit("SET_LOADING_STATE", true);
+      commit("SET_LOADING_STATE", true);
 
       /* TODO: Refactor for fast loading */
       const pArray = m.map(async mes => {
@@ -601,7 +602,7 @@ export default new Vuex.Store({
         if (!isMessageExist(group, obj)) commit("ADD_MESSAGE", { group, obj });
       });
 
-      // commit("SET_LOADING_STATE", false);
+      commit("SET_LOADING_STATE", false);
     },
 
     /**
