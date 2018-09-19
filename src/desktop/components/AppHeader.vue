@@ -5,7 +5,7 @@
         :to="{ path: '/' }"
         :class="$style.logo"
       >
-        <img src="@/assets/logo.svg" />
+        <img src="@/shared/assets/logo.svg" />
         <h1>Planet<span>Chat</span></h1>
       </router-link>
       <div :class="$style.controls">
