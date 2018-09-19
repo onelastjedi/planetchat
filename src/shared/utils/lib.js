@@ -7,8 +7,8 @@ import {
   forgotPassword,
   resetPassword,
   photoUrl
-} from "@/utils/auth";
-import { delay, log, isUpperCase, asyncForEach } from "@/utils/helpers-common";
+} from "./auth";
+import { delay, log, isUpperCase, asyncForEach } from "./helpers-common";
 
 export default {
   /* Auth */
