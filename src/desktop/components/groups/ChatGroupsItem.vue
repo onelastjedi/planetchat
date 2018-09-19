@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import { base64, parseSystemMessage } from "@/shared/utils/messages-common";
 export default {
   props: {
     groupId: {
@@ -56,8 +55,8 @@ export default {
   },
   methods: {
     decode(message) {
-      const dm = base64.decode(message.tx);
-      return message.sm ? parseSystemMessage(dm) : dm;
+      const dm = this.$lib.base64.decode(message.tx);
+      return message.sm ? this.$lib.parseSystemMessage(dm) : dm;
     },
     selectGroup(groupId) {
       this.$router.push(`/groups/${groupId}`);
