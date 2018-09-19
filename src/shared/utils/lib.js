@@ -10,7 +10,8 @@ import {
   photoUrl
 } from "./auth";
 import { delay, log, isUpperCase, asyncForEach } from "./helpers-common";
-import { base64, parseSystemMessage } from "./messages-common";
+import { base64, parseSystemMessage, datetime } from "./messages-common";
+import HTTP from "./http-common";
 
 export default {
   /* Auth */
@@ -32,5 +33,9 @@ export default {
 
   /* Messages */
   base64,
-  parseSystemMessage
+  parseSystemMessage,
+  datetime,
+
+  /* HTTP */
+  HTTP
 };
