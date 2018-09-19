@@ -1,15 +1,11 @@
 <template>
-  <div :class="$style.header" v-if="group">
-    <h3>{{ group.name }}&nbsp;&nbsp;<span v-if="lastActiveTime">(Active {{ lastActiveTime }})</span></h3>
+  <div :class="$style.header">
+    <h3>{{ name }}&nbsp;&nbsp;<span v-if="lastActiveTime">(Active {{ lastActiveTime }})</span></h3>
     <div
       @click="showDetails"
       :class="$style.avatar"
     >
-      <img :src="
-        group.group_photo_id
-        ? group.group_photo_id
-        : '/img/mocks/inbox_avatar_default.png'
-      "/>
+      <img :src="avatar"/>
     </div>
   </div>
 </template>
@@ -20,12 +16,17 @@ export default {
     groupId: {
       type: Number,
       default: null
+    },
+    name: {
+      type: String,
+      default: "Loading..."
+    },
+    avatar: {
+      type: String,
+      default: "/img/mocks/inbox_avatar_default.png"
     }
   },
   computed: {
-    group() {
-      return this.$store.getters.getGroupById(this.groupId);
-    },
     lastActiveTime() {
       return this.$store.getters.getLastMessageTimeByGroupId(this.groupId);
     }
