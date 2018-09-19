@@ -56,6 +56,7 @@ export default {
   .header
     position relative
     width 100%
+    min-width 740px
     height 80px
     background linear-gradient(0deg, #5997dc 0%, #56b9d6 100%)
     line-height 80px
