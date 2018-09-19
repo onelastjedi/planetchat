@@ -9,7 +9,7 @@
     <add-new-contact-popup />
     <weather-popup />
     <!-- <create-group-popup /> -->
-    <!-- <edit-group-popup /> -->
+    <edit-group-popup />
     <!-- <add-group-members-popup /> -->
     <!-- <user-added-popup /> -->
     <router-view />
@@ -26,9 +26,9 @@ export default {
     AppHeader: () => import("@/desktop/components/AppHeader"),
     AddNewContactPopup: () =>
       import("@/desktop/components/popups/AddNewContactPopup"),
-    WeatherPopup: () => import("@/desktop/components/popups/WeatherPopup")
+    WeatherPopup: () => import("@/desktop/components/popups/WeatherPopup"),
     // CreateGroupPopup: () => import("@/components/popups/CreateGroupPopup"),
-    // EditGroupPopup: () => import("@/components/popups/EditGroupPopup"),
+    EditGroupPopup: () => import("@/desktop/components/popups/EditGroupPopup")
     // AddGroupMembersPopup: () =>
     //   import("@/components/popups/AddGroupMembersPopup"),
     // UserAddedPopup: () => import("@/components/popups/UserAddedPopup"),
