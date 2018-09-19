@@ -46,11 +46,6 @@ export default {
       return this.$route.meta.isHeader;
     },
 
-    /* Is footer displayed */
-    isFooter() {
-      return this.$route.meta.isFooter;
-    },
-
     /* Is overlay visible */
     isAppOverlayed() {
       return this.$store.getters.isAnyPopupVisible;
