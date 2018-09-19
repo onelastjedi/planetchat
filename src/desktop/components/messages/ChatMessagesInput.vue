@@ -20,14 +20,6 @@
  * @since 0.1.0
  * @author Anton Komarenko <mi3ta@sent.as>
  */
-import {
-  currentUserUID,
-  currentUserSession,
-  getLocalRotatedPhotoAsBase64String
-} from "@/shared/utils/auth";
-import { base64, datetime } from "@/shared/utils/messages-common";
-import HTTP from "@/shared/utils/http-common";
-
 export default {
   props: {
     /**
@@ -91,12 +83,12 @@ export default {
       /**
        * Creates sent_datetime as seconds since epoch in UTC
        */
-      const sent_datetime = datetime();
+      const sent_datetime = this.$lib.datetime();
 
       /**
        * Creates a base64 encoded ASCII string
        */
-      const message_text = base64.encode(message);
+      const message_text = this.$lib.base64.encode(message);
 
       /**
        * Get current group ID
@@ -120,12 +112,12 @@ export default {
       /**
        * Creates sent_datetime as seconds since epoch in UTC
        */
-      const sent_datetime = datetime();
+      const sent_datetime = this.$lib.datetime();
 
       /**
        * Creates a base64 encoded ASCII string
        */
-      const message_text = base64.encode(message);
+      const message_text = this.$lib.base64.encode(message);
 
       /**
        * Get current group ID
@@ -136,12 +128,12 @@ export default {
        * Get rotated photo
        */
       const base64photo = photo
-        ? await getLocalRotatedPhotoAsBase64String(photo)
+        ? await this.$lib.getLocalRotatedPhotoAsBase64String(photo)
         : undefined;
 
       /* Performs optimistic updates for messages */
       this.$store.commit("UPDATE_CURRENT_GROUP_MESSAGES", {
-        uid: currentUserUID(),
+        uid: this.$lib.currentUserUID(),
         tx: message_text,
         sd: sent_datetime.toString(),
         gid: to_group_id,
@@ -164,8 +156,8 @@ export default {
           headers: { "content-type": "multipart/form-data" }
         };
 
-        const { data } = await HTTP.post(
-          `/photo?session=${currentUserSession()}&group_id=${
+        const { data } = await this.$lib.HTTP.post(
+          `/photo?session=${this.$lib.currentUserSession()}&group_id=${
             this.currentGroupId
           }`,
           formData,
