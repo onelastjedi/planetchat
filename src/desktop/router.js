@@ -22,6 +22,7 @@ export default new Router({
       component: loadView("desktop", "Home"),
       beforeEnter: requireAuth,
       meta: {
+        isHeader: true,
         isFooter: false,
         isNotifier: true
       }
@@ -92,6 +93,7 @@ export default new Router({
       component: loadView("shared", "Login"),
       beforeEnter: rejectAuth,
       meta: {
+        isHeader: false,
         isFooter: true,
         isNotifier: false
       }
