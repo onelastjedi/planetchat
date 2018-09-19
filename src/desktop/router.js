@@ -40,9 +40,10 @@ export default new Router({
     {
       path: "/groups/:id",
       name: "group",
-      component: loadView("desktop", "Group"),
+      component: loadView("desktop", "Home"),
       beforeEnter: requireAuth,
       meta: {
+        isHeader: true,
         isFooter: false,
         isNotifier: true
       }
