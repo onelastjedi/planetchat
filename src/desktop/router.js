@@ -1,12 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
-// import { requireAuth, rejectAuth } from "@/utils/router-hooks";
+import { requireAuth, rejectAuth } from "@/shared/utils/router-hooks";
 
 Vue.use(Router);
 
-const loadView = view => {
+const loadView = (folder, view) => {
   return () =>
-    import(/* webpackChunkName: "view-[request]" */ `@/desktop/views/${view}.vue`);
+    import(/* webpackChunkName: "view-[request]" */ `@/${folder}/views/${view}.vue`);
 };
 
 export default new Router({
@@ -19,8 +19,8 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: loadView("Home"),
-      // beforeEnter: requireAuth,
+      component: loadView("desktop", "Home"),
+      beforeEnter: requireAuth,
       meta: {
         isFooter: false,
         isNotifier: true
@@ -86,16 +86,16 @@ export default new Router({
 //         isNotifier: true
 //       }
 //     },
-//     {
-//       path: "/login",
-//       name: "login",
-//       component: loadView("Login"),
-//       beforeEnter: rejectAuth,
-//       meta: {
-//         isFooter: true,
-//         isNotifier: false
-//       }
-//     },
+    {
+      path: "/login",
+      name: "login",
+      component: loadView("shared", "Login"),
+      beforeEnter: rejectAuth,
+      meta: {
+        isFooter: true,
+        isNotifier: false
+      }
+    },
 //     {
 //       path: "/signup",
 //       name: "signup",
