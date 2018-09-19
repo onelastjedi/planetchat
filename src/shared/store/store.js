@@ -11,8 +11,9 @@ Vue.use(Vuex);
 const getContactByUID = (user, uid) =>
   user.contacts.find(obj => obj.uid === uid);
 
-const performImageRotation = async pid =>
-  pid ? await lib.getRotatedPhotoAsBase64String(pid) : null;
+const performImageRotation = async pid => {
+  if (pid) return await lib.getRotatedPhotoAsBase64String(pid);
+}
 
 export default new Vuex.Store({
   state: new function() {
