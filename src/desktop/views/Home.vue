@@ -48,6 +48,7 @@ export default {
   updated() {
     if (this.groupId && this.group) {
       if (this.group.mmx && !this.group.synced) {
+        this.$store.commit("SET_LOADING_STATE", true);
         this.$store.commit("UPDATE_GROUP", { gid: this.groupId, synced: true });
         this.$socket.emit("getBefore", {
           count: 20,
