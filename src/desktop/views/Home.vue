@@ -1,11 +1,8 @@
 <template>
   <section>
-    <div :class="$style.panel">
-      <app-header />
-      <div :class="$style.panelBody">
-        <chat-groups-wrapper />
-        <chat-messages-empty />
-      </div>
+    <div :class="$style.panelBody">
+      <chat-groups-wrapper />
+      <chat-messages-empty />
     </div>
   </section>
 </template>
@@ -22,7 +19,6 @@ export default {
      * Resolves components asynchronously
      * @see {@link https://vuejs.org/v2/guide/components-dynamic-async.html|Async Components}
      */
-    AppHeader: () => import("@/desktop/components/AppHeader"),
     ChatGroupsWrapper: () =>
       import("@/desktop/components/groups/ChatGroupsWrapper"),
     ChatMessagesEmpty: () =>
