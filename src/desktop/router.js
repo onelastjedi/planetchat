@@ -27,16 +27,17 @@ export default new Router({
         isNotifier: true
       }
     },
-    //     {
-    //       path: "/create",
-    //       name: "create",
-    //       component: loadView("Create"),
-    //       beforeEnter: requireAuth,
-    //       meta: {
-    //         isFooter: false,
-    //         isNotifier: true
-    //       }
-    //     },
+    {
+      path: "/create",
+      name: "create",
+      component: loadView("desktop", "Home"),
+      beforeEnter: requireAuth,
+      meta: {
+        isHeader: true,
+        isFooter: false,
+        isNotifier: true
+      }
+    },
     {
       path: "/groups/:id",
       name: "group",
