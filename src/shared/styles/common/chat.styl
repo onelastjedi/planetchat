@@ -1,0 +1,31 @@
+section
+  background url('@/assets/chat_bg_pattern.png') repeat
+
+  @media (max-width: 739px)
+    background-image none
+    background-color #ecf1f5
+
+  .panel
+    display grid
+    grid-template-rows 80px auto
+    height 100vh
+
+  .panelBody
+    display grid
+    grid-template-columns 29% 69%
+    grid-column-gap 2%
+    padding-top 20px
+    width 80%
+    margin 0 auto
+
+    @media (max-width: 960px)
+      width 100%
+      grid-column-gap 0
+      grid-template-columns 30% 70%
+      padding-top 0
+
+    @media (max-width: 739px)
+      width 100%
+      grid-template-columns 100%
+      padding-top 0
+      height 100vh

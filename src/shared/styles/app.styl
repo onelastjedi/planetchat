@@ -1,0 +1,79 @@
+@import 'helpers/*'
+@import url('https://fonts.googleapis.com/css?family=Dosis:400,700')
+
+body
+  font-family 'Dosis', sans-serif
+  font-size 16px
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  width 100vw
+  height 100vh
+  min-width 360px
+
+  a
+    text-decoration none
+    color #578FC0
+
+  input
+    border none
+
+main
+  position relative
+  height 100vh
+  display grid
+  grid-template-rows auto 56px
+
+  *
+    ::-webkit-scrollbar
+      width 8px
+
+    ::-webkit-scrollbar-thumb
+      background-color #D3DBE4
+
+main.overlayed
+  user-select none
+  overflow hidden
+
+  &:before
+    content ''
+    z-index 2
+    display block
+    position fixed
+    top 0
+    right 0
+    bottom 0
+    left 0
+    width 100vw
+    height 100vh
+    background-color rgba(8, 69, 136, 0.3)
+
+.chevron::before
+	border-style solid
+	border-width 2px 2px 0 0
+	content ''
+	display inline-block
+	height 5px
+	position relative
+	transform rotate(-45deg)
+	vertical-align middle
+	width 5px
+
+.chevron.right:before
+	left 0
+	transform rotate(45deg)
+
+.chevron.bottom:before
+	top -2px
+	transform rotate(135deg)
+
+.chevron.left:before
+	left 0.25em
+	transform rotate(-135deg)
+
+.fade-enter-active, .fade-leave-active
+  transition opacity .5s ease-out
+
+.fade-enter, .fade-leave-to
+  opacity 0
+  transition opacity .4s ease-out
+
