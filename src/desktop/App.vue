@@ -3,6 +3,7 @@
     v-if="isConnected"
     :class="{ overlayed: isAppOverlayed }"
   >
+    <AppHeader v-if="isHeader" />
     <!-- <notifier />
     <full-screen-image-popup />
     <add-new-contact-popup />
@@ -12,7 +13,6 @@
     <add-group-members-popup />
     <user-added-popup /> -->
     <router-view />
-    <AppFooter v-if="isFooter" />
   </main>
 </template>
 
@@ -23,7 +23,7 @@ export default {
      * Resolves components asynchronously
      * @see {@link https://vuejs.org/v2/guide/components-dynamic-async.html|Async Components}
      */
-    AppFooter: () => import("@/shared/components/AppFooter"),
+    AppHeader: () => import("@/desktop/components/AppHeader")
     // AddNewContactPopup: () => import("@/components/popups/AddNewContactPopup"),
     // WeatherPopup: () => import("@/components/popups/WeatherPopup"),
     // CreateGroupPopup: () => import("@/components/popups/CreateGroupPopup"),
@@ -39,6 +39,11 @@ export default {
     /* Socket connection status */
     isConnected() {
       return this.$store.state.isSocketConnected;
+    },
+
+    /* Is header displayed */
+    isHeader() {
+      return this.$route.meta.isHeader;
     },
 
     /* Is footer displayed */
@@ -75,7 +80,7 @@ export default {
     /* Saves connection to store */
     this.$store.commit("SET_SOCKET_CONNECTION_STATE", true);
   }
-}
+};
 </script>
 
 
