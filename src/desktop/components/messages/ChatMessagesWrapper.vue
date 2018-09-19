@@ -93,6 +93,9 @@ export default {
   },
   updated() {
     this.scrollToBottom();
+  },
+  mounted() {
+    this.scrollToBottom();
   }
 };
 </script>
