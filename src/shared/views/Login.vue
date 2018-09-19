@@ -1,41 +1,44 @@
 <template>
   <div :class="$style.auth">
-    <logo-header>Login to get started</logo-header>
-    <form @submit.stop.prevent="handleSubmit({ account, password })">
-      <div
-        v-if="error"
-        :class="$style.error"
-      >
-        {{ error }}
-      </div>
-      <div :class="$style.loginInput">
-        <i class="icon-user" />
-        <input
-          type="text"
-          :disabled="disableInputs"
-          placeholder="Username or email"
-          v-model.trim="account"
-        />
-      </div>
-      <hr>
-      <div :class="$style.passwordInput">
-        <i class="icon-pass" />
-        <input
-          :type="showPassword ? 'text' : 'password'"
-          :disabled="disableInputs"
-          v-model.trim="password"
-          placeholder="Password"
-        />
-        <i class="icon-eye" @click="toggleShowPassord" />
-      </div>
-      <router-link :to="{path: '/forgot'}">Forgot Password?</router-link>
-      <styled-button type="filled-white" :disabled="!account || !password || disableInputs">Login</styled-button>
-      <p>
-        Don't have an account yet?&nbsp;
-        <router-link :to="{path: '/signup'}">Register now!</router-link>
-      </p>
-    </form>
-    <app-store-badge />
+    <div :class="$style.wrapper">
+      <logo-header>Login to get started</logo-header>
+      <form @submit.stop.prevent="handleSubmit({ account, password })">
+        <div
+          v-if="error"
+          :class="$style.error"
+        >
+          {{ error }}
+        </div>
+        <div :class="$style.loginInput">
+          <i class="icon-user" />
+          <input
+            type="text"
+            :disabled="disableInputs"
+            placeholder="Username or email"
+            v-model.trim="account"
+          />
+        </div>
+        <hr>
+        <div :class="$style.passwordInput">
+          <i class="icon-pass" />
+          <input
+            :type="showPassword ? 'text' : 'password'"
+            :disabled="disableInputs"
+            v-model.trim="password"
+            placeholder="Password"
+          />
+          <i class="icon-eye" @click="toggleShowPassord" />
+        </div>
+        <router-link :to="{path: '/forgot'}">Forgot Password?</router-link>
+        <styled-button type="filled-white" :disabled="!account || !password || disableInputs">Login</styled-button>
+        <p>
+          Don't have an account yet?&nbsp;
+          <router-link :to="{path: '/signup'}">Register now!</router-link>
+        </p>
+      </form>
+      <app-store-badge />
+    </div>
+    <app-footer />
   </div>
 </template>
 
@@ -53,7 +56,8 @@ export default {
      */
     LogoHeader: () => import("@/shared/components/LogoHeader"),
     AppStoreBadge: () => import("@/shared/components/AppStoreBadge"),
-    StyledButton: () => import("@/shared/components/StyledButton")
+    StyledButton: () => import("@/shared/components/StyledButton"),
+    AppFooter: () => import("@/shared/components/AppFooter")
   },
   data: () => ({
     /* Password characters visibility */
