@@ -23,8 +23,13 @@ export default {
      * @see {@link https://vuejs.org/v2/guide/components-dynamic-async.html|Async Components}
      */
     AppHeader: () => import("@/desktop/components/AppHeader"),
-    ChatGroupsWrapper: () => import("@/desktop/components/groups/ChatGroupsWrapper"),
-    ChatMessagesEmpty: () => import("@/desktop/components/messages/ChatMessagesEmpty"),
+    ChatGroupsWrapper: () =>
+      import("@/desktop/components/groups/ChatGroupsWrapper"),
+    ChatMessagesEmpty: () =>
+      import("@/desktop/components/messages/ChatMessagesEmpty")
+  },
+  mounted() {
+    this.$store.dispatch("init");
   }
 };
 </script>
