@@ -4,14 +4,14 @@
     :class="{ overlayed: isAppOverlayed }"
   >
     <AppHeader v-if="isHeader" />
-    <!-- <notifier />
-    <full-screen-image-popup />
+    <!-- <notifier /> -->
+    <!-- <full-screen-image-popup /> -->
     <add-new-contact-popup />
     <weather-popup />
-    <create-group-popup />
-    <edit-group-popup />
-    <add-group-members-popup />
-    <user-added-popup /> -->
+    <!-- <create-group-popup /> -->
+    <!-- <edit-group-popup /> -->
+    <!-- <add-group-members-popup /> -->
+    <!-- <user-added-popup /> -->
     <router-view />
   </main>
 </template>
@@ -23,9 +23,10 @@ export default {
      * Resolves components asynchronously
      * @see {@link https://vuejs.org/v2/guide/components-dynamic-async.html|Async Components}
      */
-    AppHeader: () => import("@/desktop/components/AppHeader")
-    // AddNewContactPopup: () => import("@/components/popups/AddNewContactPopup"),
-    // WeatherPopup: () => import("@/components/popups/WeatherPopup"),
+    AppHeader: () => import("@/desktop/components/AppHeader"),
+    AddNewContactPopup: () =>
+      import("@/desktop/components/popups/AddNewContactPopup"),
+    WeatherPopup: () => import("@/desktop/components/popups/WeatherPopup")
     // CreateGroupPopup: () => import("@/components/popups/CreateGroupPopup"),
     // EditGroupPopup: () => import("@/components/popups/EditGroupPopup"),
     // AddGroupMembersPopup: () =>
