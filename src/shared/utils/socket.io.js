@@ -4,8 +4,8 @@
  * @author Anton Komarenko <mi3ta@sent.as>
  */
 import io from "socket.io-client";
-import lib from "@/utils/lib";
-import store from "@/store";
+import lib from "./lib";
+import store from "@/shared/store/store";
 
 class Socket {
   /* Construct socket.io object with given API's url */
