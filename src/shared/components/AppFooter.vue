@@ -25,8 +25,6 @@ export default {
     text-align center
     color #2A2E31
     background white
-    grid-row-start 2
-    grid-row-end 3
 
     a
       border-bottom 1px solid #578fc057
