@@ -23,8 +23,6 @@
  * @since 0.1.0
  * @author Anton Komarenko <mi3ta@sent.as>
  */
-import { logout } from "@/shared/utils/auth";
-
 export default {
   components: {
     /**
@@ -41,7 +39,7 @@ export default {
 
     /* Performs signout */
     signOut() {
-      logout();
+      this.$lib.logout();
     },
 
     /* Opens weather popup */
