@@ -133,7 +133,8 @@ export default new Vuex.Store({
     ADD_GROUP: ({ groups }, group) =>
       groups.push(group),
 
-    UPDATE_GROUP: (state, { group, payload }) => {
+    UPDATE_GROUP: ({ groups }, payload) => {
+      const group = groups.find(obj => obj.gid === payload.gid);
       for (const key in payload) Vue.set(group, key, payload[key]);
     },
 
@@ -143,7 +144,9 @@ export default new Vuex.Store({
     ADD_MEMBER: ({ groups }, { gid, member }) =>
       groups.find(group => group.gid === gid).members.push(member),
 
-    UPDATE_MEMBER: (state, { member, user }) => {
+    UPDATE_MEMBER: ({ groups }, { gid, user } ) => {
+      const group = groups.find(obj => obj.gid === gid);
+      const member = group.members.find(obj => obj.uid === user.uid)
       for (const key in user) Vue.set(member, key, user[key]);
     },
 
@@ -281,8 +284,9 @@ export default new Vuex.Store({
       currentUser.contacts.push(contact);
     },
 
-    UPDATE_CONTACT: (state, { contact, user }) => {
-      for (const key in user) Vue.set(contact, key, user[key]);
+    UPDATE_CONTACT: ({ currentUser }, contact) => {
+      const existing = currentUser.contacts.find(obj => obj.uid === contact.uid)
+      for (const key in contact) Vue.set(existing, key, contact[key]);
     },
 
     SELECT_CONTACT: ({ currentUser }, { selected, uid }) =>
@@ -333,17 +337,20 @@ export default new Vuex.Store({
     /**
      * Performs initial app loading
      */
-    init: ({ commit }) => {
+    init: () => {
+
         /* Get current user groups (and chats) */
         socket.emit("getGroupAll", {});
 
         /* Get current user info */
-        socket.emit("getOtherInfo", { user_id: lib.currentUserUID() });
+        socket.emit("getOtherInfo", {
+          user_id: lib.currentUserUID(),
+          tag: "currentUser"
+        });
 
-        // /* TODO: Move privacy request here */
         socket.emit("getPrivacy", {});
 
-        // /* Get current user contacts */
+        /* Get current user contacts */
         socket.emit("getContacts", {});
       },
 
@@ -359,34 +366,25 @@ export default new Vuex.Store({
      * Groups
      *
      */
-    getGroupAll: async ({ commit, getters: { isGroupExist }, dispatch }, { groups }) => {
-      // Handling
-      groups = groups.map(g => {
-        return {
-          ...g,
-          members: [],
-          messages: []
-        };
-      });
-
-      // Saving
+    getGroupAll: async ({ getters: { isGroupExist }, dispatch }, { groups }) => {
       groups.forEach(group => {
         if (!isGroupExist(group)) {
-          dispatch("addGroup", group);
+          dispatch("addGroup", {
+            ...group,
+            members: [],
+            messages: []
+          });
         }
       })
     },
 
-    getGroupInfo: async ({ commit, getters: { getGroupById } }, payload) => {
-      const group = getGroupById(payload.gid);
+    getGroupInfo: async ({ commit }, payload) => {
 
-      // Handling
       payload.group_photo_id = await performImageRotation(
         payload.group_photo_id
       );
 
-      // Saving
-      commit("UPDATE_GROUP", { group, payload });
+      commit("UPDATE_GROUP", payload);
     },
 
     getGroupMembersById: (
@@ -403,18 +401,16 @@ export default new Vuex.Store({
         };
       });
 
+
       // Saving
       members.forEach(member => {
 
         if (!isMemberExistInGroup({ gid, uid: member.uid }))
           commit("ADD_MEMBER", { gid, member });
 
-        else {
-          const oldM = getGroupMemberByUID(gid, member.uid);
-          commit("UPDATE_MEMBER", { member: oldM, user: member });
-        }
+        // else commit("UPDATE_MEMBER", { gid, member });
 
-        socket.emit("getOtherInfo", { user_id: member.uid })
+        socket.emit("getOtherInfo", { user_id: member.uid, tag: gid })
       });
     },
 
@@ -612,16 +608,14 @@ export default new Vuex.Store({
      *
      */
     getContacts: ({ commit }, { contacts }) => {
-      // Handling
-      contacts = contacts.map(c => {
-        return { uid: c };
-      });
+      contacts.forEach(contact => {
 
-      // Saving
-      contacts.forEach(c => {
+        socket.emit("getOtherInfo", {
+          user_id: contact,
+          tag: "contacts"
+        })
 
-        socket.emit("getOtherInfo", { user_id: c.uid })
-        commit("ADD_CONTACT", c)
+        commit("ADD_CONTACT", { uid: contact })
       });
     },
 
@@ -634,35 +628,33 @@ export default new Vuex.Store({
     },
 
     /**
-     * Send data to correct mutation, based on app state
+     * Send data to correct mutation, based on tag
      */
     getOtherInfo: async (
-      {
-        commit,
-        state: { currentUser, groups },
-        getters: { getContactByUID, getGroupMemberByUID }
-      },
-      { user }
+      { commit },
+      { user, tag }
     ) => {
+
       /* TODO: Convert to decorator */
       user.pid = await performImageRotation(user.pid);
 
-      /* Updates current user info */
-      if (user.uid === lib.currentUserUID()) commit("SET_CURRENT_USER", user);
+      switch (tag) {
 
-      /* Updates current user contacts */
-      if (currentUser.contacts.some(obj => obj.uid === user.uid)) {
-        const contact = getContactByUID(user.uid);
-        commit("UPDATE_CONTACT", { contact, user });
+        /* Updates current user info */
+        case "currentUser":
+          commit("SET_CURRENT_USER", user);
+          break;
+
+        /* Updates current user contacts */
+        case "contacts":
+          commit("UPDATE_CONTACT", user);
+          break;
       }
 
-      /* Updates current group members */
-      groups.forEach(g => {
-        if (g.members.some(obj => obj.uid === user.uid)) {
-          const member = getGroupMemberByUID(g.gid, user.uid);
-          commit("UPDATE_MEMBER", { member, user });
-        }
-      })
+      /* Updates group members info */
+      if (typeof tag === "number") {
+        commit("UPDATE_MEMBER", { user, gid: tag });
+      }
     }
   }
 });
