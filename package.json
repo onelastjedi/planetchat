@@ -1,0 +1,59 @@
+{
+  "name": "planet-chat",
+  "version": "0.2.0",
+  "description": "Planet Chat Web App",
+  "repository": "git@api.datapond.io/opt/planetchat-front.git",
+  "author": "Anton Komarenko <mi3ta@sent.as>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "serve-desktop": "vue-cli-service serve --port 8080 ./src/desktop/main.js",
+    "serve-mobile": "vue-cli-service serve --port 8090 ./mobile/src/main.js",
+    "build": "vue-cli-service build ./src/desktop/main.js --dest ./dist/desktop",
+    "lint": "vue-cli-service lint",
+    "deploy": "aws s3 sync --delete ./dist/desktop s3://planetchat.onelastjedi.com"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "blueimp-load-image": "^2.19.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "socket.io-client": "^2.1.1",
+    "vue": "^2.5.16",
+    "vue-mq": "^0.2.1",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@vue/cli-plugin-babel": "^3.0.0-beta.14",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.14",
+    "@vue/cli-service": "^3.0.0-beta.14",
+    "@vue/eslint-config-prettier": "^3.0.0-beta.14",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^22.4.3",
+    "lint-staged": "^6.0.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue-cli-plugin-s3-deploy": "^2.0.2",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
