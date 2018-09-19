@@ -1,10 +1,15 @@
 <template>
-  <div :class="$style.wrapper">
-    <chat-messages-header :groupId="group.gid" />
+  <div :class="$style.wrapper" v-if="group">
+    <chat-messages-header
+      :name="group.name"
+      :groupId="group.gid"
+      :avatar="group.group_photo_id"
+    />
     <div
       :class="$style.chatMessagesWrapper"
       ref="chatMessagesWrapper"
     >
+      <loader />
       <chat-messages-item
         v-if="messages && members.length"
         v-for="(message, index) in messages"
@@ -45,32 +50,26 @@ export default {
       import("@/desktop/components/messages/ChatMessagesItem"),
     ChatMessagesInput: () =>
       import("@/desktop/components/messages/ChatMessagesInput"),
+    Loader: () => import("@/shared/components/Loader"),
     Typing: () => import("@/shared/components/Typing")
   },
   props: {
     group: {
       type: Object,
-      default: () => {}
-    }
-  },
-  watch: {
-    groupId() {
-      this.scrollToBottom();
-      this.emitGetBefore();
+      default: null
     }
   },
   computed: {
-    groupId() {
-      return +this.$route.params.id;
-    },
     messages() {
-      return this.$store.getters.getMessagesByGroupId(this.groupId);
+      return this.$store.getters.getMessagesByGroupId(this.group.gid);
     },
+
     members() {
-      return this.$store.getters.getMembersByGroupId(this.groupId);
+      return this.$store.getters.getMembersByGroupId(this.group.gid);
     },
+
     typingUsers() {
-      return this.$store.getters.getTypingUsers(this.groupId);
+      return this.$store.getters.getTypingUsers(this.group.gid);
     }
   },
   methods: {
@@ -90,20 +89,10 @@ export default {
         const member = this.group.members.find(obj => obj.uid === uid);
         if (member) return member.pid;
       }
-    },
-    emitGetBefore() {
-      if (this.group.mmx) {
-        this.$socket.emit("getBefore", {
-          count: 20,
-          group_id: this.group.gid,
-          message_id: 4294967295
-        });
-      }
     }
   },
-  mounted() {
+  updated() {
     this.scrollToBottom();
-    this.emitGetBefore();
   }
 };
 </script>
