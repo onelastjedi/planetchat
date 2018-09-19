@@ -585,8 +585,6 @@ export default new Vuex.Store({
       { commit, getters: { getGroupById, isMessageExist } },
       { gid, m }
     ) => {
-      commit("SET_LOADING_STATE", true);
-
       /* TODO: Refactor for fast loading */
       const pArray = m.map(async mes => {
         return {
