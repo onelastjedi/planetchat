@@ -26,66 +26,66 @@ export default new Router({
         isNotifier: true
       }
     },
-//     {
-//       path: "/create",
-//       name: "create",
-//       component: loadView("Create"),
-//       beforeEnter: requireAuth,
-//       meta: {
-//         isFooter: false,
-//         isNotifier: true
-//       }
-//     },
-//     {
-//       path: "/groups/:id",
-//       name: "group",
-//       component: loadView("Group"),
-//       beforeEnter: requireAuth,
-//       meta: {
-//         isFooter: false,
-//         isNotifier: true
-//       }
-//     },
-//     {
-//       path: "/settings",
-//       name: "settings",
-//       component: loadView("Settings"),
-//       beforeEnter: requireAuth,
-//       meta: {
-//         isFooter: false,
-//         isNotifier: true
-//       }
-//     },
-//     {
-//       path: "/settings/details",
-//       name: "details",
-//       component: loadView("Details"),
-//       beforeEnter: requireAuth,
-//       meta: {
-//         isFooter: false,
-//         isNotifier: true
-//       }
-//     },
-//     {
-//       path: "/settings/privacy",
-//       name: "privacy",
-//       component: loadView("Privacy"),
-//       beforeEnter: requireAuth,
-//       meta: {
-//         isFooter: false,
-//         isNotifier: true
-//       }
-//     },
-//     {
-//       path: "/settings/info",
-//       name: "info",
-//       component: loadView("Info"),
-//       beforeEnter: requireAuth,
-//       meta: {
-//         isFooter: false,
-//         isNotifier: true
-//       }
-//     },
+    //     {
+    //       path: "/create",
+    //       name: "create",
+    //       component: loadView("Create"),
+    //       beforeEnter: requireAuth,
+    //       meta: {
+    //         isFooter: false,
+    //         isNotifier: true
+    //       }
+    //     },
+    {
+      path: "/groups/:id",
+      name: "group",
+      component: loadView("desktop", "Group"),
+      beforeEnter: requireAuth,
+      meta: {
+        isFooter: false,
+        isNotifier: true
+      }
+    },
+    //     {
+    //       path: "/settings",
+    //       name: "settings",
+    //       component: loadView("Settings"),
+    //       beforeEnter: requireAuth,
+    //       meta: {
+    //         isFooter: false,
+    //         isNotifier: true
+    //       }
+    //     },
+    //     {
+    //       path: "/settings/details",
+    //       name: "details",
+    //       component: loadView("Details"),
+    //       beforeEnter: requireAuth,
+    //       meta: {
+    //         isFooter: false,
+    //         isNotifier: true
+    //       }
+    //     },
+    //     {
+    //       path: "/settings/privacy",
+    //       name: "privacy",
+    //       component: loadView("Privacy"),
+    //       beforeEnter: requireAuth,
+    //       meta: {
+    //         isFooter: false,
+    //         isNotifier: true
+    //       }
+    //     },
+    //     {
+    //       path: "/settings/info",
+    //       name: "info",
+    //       component: loadView("Info"),
+    //       beforeEnter: requireAuth,
+    //       meta: {
+    //         isFooter: false,
+    //         isNotifier: true
+    //       }
+    //     },
     {
       path: "/login",
       name: "login",
@@ -95,36 +95,36 @@ export default new Router({
         isFooter: true,
         isNotifier: false
       }
-    },
-//     {
-//       path: "/signup",
-//       name: "signup",
-//       component: loadView("Signup"),
-//       beforeEnter: rejectAuth,
-//       meta: {
-//         isFooter: true,
-//         isNotifier: false
-//       }
-//     },
-//     {
-//       path: "/forgot",
-//       name: "forgot",
-//       component: loadView("Forgot"),
-//       beforeEnter: rejectAuth,
-//       meta: {
-//         isFooter: true,
-//         isNotifier: false
-//       }
-//     },
-//     {
-//       path: "/reset",
-//       name: "reset",
-//       component: loadView("Reset"),
-//       beforeEnter: rejectAuth,
-//       meta: {
-//         isFooter: true,
-//         isNotifier: false
-//       }
-//     }
+    }
+    //     {
+    //       path: "/signup",
+    //       name: "signup",
+    //       component: loadView("Signup"),
+    //       beforeEnter: rejectAuth,
+    //       meta: {
+    //         isFooter: true,
+    //         isNotifier: false
+    //       }
+    //     },
+    //     {
+    //       path: "/forgot",
+    //       name: "forgot",
+    //       component: loadView("Forgot"),
+    //       beforeEnter: rejectAuth,
+    //       meta: {
+    //         isFooter: true,
+    //         isNotifier: false
+    //       }
+    //     },
+    //     {
+    //       path: "/reset",
+    //       name: "reset",
+    //       component: loadView("Reset"),
+    //       beforeEnter: rejectAuth,
+    //       meta: {
+    //         isFooter: true,
+    //         isNotifier: false
+    //       }
+    //     }
   ]
 });
