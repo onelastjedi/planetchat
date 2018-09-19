@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import socket from "@/shared/utils/socket.io";
-// import router from "@/router";
 import lib from "@/shared/utils/lib";
 import moment from "moment";
 
@@ -16,27 +15,24 @@ const performImageRotation = async pid => {
 }
 
 export default new Vuex.Store({
-  state: new function() {
+  state: {
     /* Socket related */
-    this.isSocketConnected = false;
+    isSocketConnected: false,
 
     /* Groups related */
-    this.groups = [];
-    this.searchedUsers = [];
-    // this.currentGroupId = () => +router.currentRoute.params.id;
-    this.currentGroup = () =>
-      this.groups.find(obj => obj.gid === this.currentGroupId());
+    groups: [],
+    searchedUsers: [],
 
     /* Users related */
-    this.currentUser = {
+    currentUser: {
       contacts: [],
       privacy: {}
-    };
+    },
 
     /* UI related */
-    this.isDataLoading = false;
+    isDataLoading: false,
 
-    this.popups = {
+    popups: {
       AddNewContact: false,
       Weather: false,
       CreateGroup: false,
@@ -44,11 +40,11 @@ export default new Vuex.Store({
       AddGroupMembers: false,
       UserAdded: false,
       FullScreenImage: false
-    };
+    },
 
     /* Errors related */
-    this.errors = [];
-  }(),
+    errors: [],
+  },
   getters: {
     /* Groups related */
     getGroupById: ({ groups }) => id => groups.find(group => group.gid === id),
@@ -228,8 +224,9 @@ export default new Vuex.Store({
       else messages.unshift(m);
     },
 
-    UPDATE_CURRENT_GROUP_MESSAGES: ({ currentGroup }, message) => {
-      currentGroup().messages.unshift(message);
+    UPDATE_CURRENT_GROUP_MESSAGES: ({ groups }, message) => {
+      const group = groups.find(obj => obj.gid === message.gid)
+      group.messages.unshift(message);
     },
 
     SET_READ_STATUS: ({ groups }, message) => {
@@ -464,22 +461,24 @@ export default new Vuex.Store({
 
         /* Start */
         if (payload.in === "sta") {
-          const member = getGroupMemberByUID(payload.gid, payload.uid);
-
-          const user = member;
-          user.typing = true;
-
-          commit("UPDATE_MEMBER", { member, user })
+          commit("UPDATE_MEMBER", {
+            gid: payload.gid,
+            user: {
+              uid: payload.uid,
+              typing: true
+            }
+          })
         }
 
         /* Stop */
         if (payload.in === "stp") {
-          const member = getGroupMemberByUID(payload.gid, payload.uid);
-
-          const user = member;
-          user.typing = false;
-
-          commit("UPDATE_MEMBER", { member, user })
+          commit("UPDATE_MEMBER", {
+            gid: payload.gid,
+            user: {
+              uid: payload.uid,
+              typing: false
+            }
+          })
         }
       }
 
