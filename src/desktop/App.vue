@@ -5,7 +5,7 @@
   >
     <AppHeader v-if="isHeader" />
     <!-- <notifier /> -->
-    <!-- <full-screen-image-popup /> -->
+    <full-screen-image-popup />
     <add-new-contact-popup />
     <weather-popup />
     <!-- <create-group-popup /> -->
@@ -28,12 +28,12 @@ export default {
       import("@/desktop/components/popups/AddNewContactPopup"),
     WeatherPopup: () => import("@/desktop/components/popups/WeatherPopup"),
     // CreateGroupPopup: () => import("@/components/popups/CreateGroupPopup"),
-    EditGroupPopup: () => import("@/desktop/components/popups/EditGroupPopup")
+    EditGroupPopup: () => import("@/desktop/components/popups/EditGroupPopup"),
     // AddGroupMembersPopup: () =>
     //   import("@/components/popups/AddGroupMembersPopup"),
     // UserAddedPopup: () => import("@/components/popups/UserAddedPopup"),
-    // FullScreenImagePopup: () =>
-    //   import("@/components/popups/FullScreenImagePopup"),
+    FullScreenImagePopup: () =>
+      import("@/desktop/components/popups/FullScreenImagePopup")
     // Notifier: () => import("@/components/common/Notifier")
   },
   computed: {
