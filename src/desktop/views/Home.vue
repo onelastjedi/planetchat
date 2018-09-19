@@ -2,7 +2,9 @@
   <section>
     <div :class="$style.panelBody">
       <chat-groups-wrapper />
-      <component v-bind:is="currentComponent" v-bind="currentProps"></component>
+      <keep-alive>
+        <component v-bind:is="currentComponent" v-bind="currentProps"></component>
+      </keep-alive>
     </div>
   </section>
 </template>
@@ -24,7 +26,8 @@ export default {
     ChatMessagesEmpty: () =>
       import("@/desktop/components/messages/ChatMessagesEmpty"),
     ChatMessagesWrapper: () =>
-      import("@/desktop/components/messages/ChatMessagesWrapper")
+      import("@/desktop/components/messages/ChatMessagesWrapper"),
+    NewChat: () => import("@/desktop/components/messages/NewChat")
   },
   computed: {
     groupId() {
@@ -41,7 +44,8 @@ export default {
     },
 
     currentComponent() {
-      if (!this.groupId) return "chat-messages-empty";
+      if (this.$route.path === "/") return "chat-messages-empty";
+      if (this.$route.path === "/create") return "new-chat";
       return "chat-messages-wrapper";
     }
   },
