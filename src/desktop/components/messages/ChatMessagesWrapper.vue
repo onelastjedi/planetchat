@@ -39,9 +39,6 @@
 </template>
 
 <script>
-import { currentUserUID } from "@/shared/utils/auth";
-import { base64 } from "@/shared/utils/messages-common";
-
 export default {
   components: {
     ChatMessagesHeader: () =>
@@ -74,10 +71,10 @@ export default {
   },
   methods: {
     isFrom(uid) {
-      return uid !== currentUserUID();
+      return uid !== this.$lib.currentUserUID();
     },
     decode(message) {
-      return base64.decode(message);
+      return this.$lib.base64.decode(message);
     },
     scrollToBottom() {
       const { chatMessagesWrapper } = this.$refs;

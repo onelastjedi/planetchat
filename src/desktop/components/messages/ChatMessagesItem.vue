@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.wrapper">
-    <div v-if="sm" :class="$style.system">{{ parseSystemMessage(text) }}</div>
+    <div v-if="sm" :class="$style.system">{{ this.$lib.parseSystemMessage(text) }}</div>
     <div v-else :class="[$style.message, {[$style.from]: from}]">
       <img
         :class="$style.avatar"
@@ -37,8 +37,6 @@
 </template>
 
 <script>
-import { currentUserUID } from "@/shared/utils/auth";
-import { parseSystemMessage } from "@/shared/utils/messages-common";
 export default {
   props: {
     text: {
@@ -79,9 +77,6 @@ export default {
     },
     lk: [String, Object]
   },
-  data: () => ({
-    parseSystemMessage
-  }),
   computed: {
     currentUser() {
       return this.$store.state.currentUser;
@@ -100,7 +95,7 @@ export default {
      * @returns {number}
      */
     isDelivered(dr) {
-      return dr === 1 && this.uid === currentUserUID();
+      return dr === 1 && this.uid === this.$lib.currentUserUID();
     },
 
     /**
@@ -109,7 +104,7 @@ export default {
      * @returns {number}
      */
     isRead(dr) {
-      return dr === 2 && this.uid === currentUserUID();
+      return dr === 2 && this.uid === this.$lib.currentUserUID();
     },
 
     /**
@@ -131,13 +126,13 @@ export default {
     }
   },
   updated() {
-    if (this.uid !== currentUserUID() && this.dr !== 2) {
+    if (this.uid !== this.$lib.currentUserUID() && this.dr !== 2) {
       this.$socket.emit("postMarkRead", { mid: [this.mid] });
       this.$store.commit("DECREMENT_NEW_COUNT", this.group);
     }
   },
   mounted() {
-    if (this.uid !== currentUserUID() && this.dr !== 2) {
+    if (this.uid !== this.$lib.currentUserUID() && this.dr !== 2) {
       this.$socket.emit("postMarkRead", { mid: [this.mid] });
       this.$store.commit("DECREMENT_NEW_COUNT", this.group);
     }
