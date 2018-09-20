@@ -37,6 +37,14 @@ export default {
       import("@/desktop/components/popups/FullScreenImagePopup")
     // Notifier: () => import("@/components/common/Notifier")
   },
+  watch: {
+    /**
+     * Perform init action when socket connected
+     */
+    isConnected() {
+      this.$store.dispatch("init");
+    }
+  },
   computed: {
     /* Socket connection status */
     isConnected() {
