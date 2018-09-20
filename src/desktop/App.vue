@@ -23,7 +23,7 @@ export default {
      * Resolves components asynchronously
      * @see {@link https://vuejs.org/v2/guide/components-dynamic-async.html|Async Components}
      */
-    AppHeader: () => import("@/desktop/components/AppHeader"),
+    AppHeader: () => import("@/desktop/components/common/AppHeader"),
     AddNewContactPopup: () =>
       import("@/desktop/components/popups/AddNewContactPopup"),
     WeatherPopup: () => import("@/desktop/components/popups/WeatherPopup"),
