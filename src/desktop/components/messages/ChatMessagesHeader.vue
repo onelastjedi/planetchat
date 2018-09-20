@@ -5,7 +5,7 @@
       @click="showDetails"
       :class="$style.avatar"
     >
-      <img :src="avatar"/>
+      <img :src="avatar ? avatar : '/img/mocks/inbox_avatar_default.png'"/>
     </div>
   </div>
 </template>
