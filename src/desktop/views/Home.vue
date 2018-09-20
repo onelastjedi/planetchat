@@ -1,10 +1,8 @@
 <template>
   <section>
     <div :class="$style.panelBody">
-      <chat-groups-wrapper />
-      <keep-alive>
-        <component v-bind:is="currentComponent" v-bind="currentProps"></component>
-      </keep-alive>
+      <chat-groups-wrapper :groups="groups"/>
+      <component v-bind:is="currentComponent" v-bind="currentProps"></component>
     </div>
   </section>
 </template>
@@ -29,9 +27,26 @@ export default {
       import("@/desktop/components/messages/ChatMessagesWrapper"),
     NewChat: () => import("@/desktop/components/messages/NewChat")
   },
+  watch: {
+    "groups.length"(val, oldVal) {
+      /* Group deleted */
+      if (val < oldVal) this.$router.push("/");
+
+      /* Group added */
+      if (val - oldVal === 1) this.$router.push(`/groups/${this.lastGroupId}`);
+    }
+  },
   computed: {
     groupId() {
       return +this.$route.params.id;
+    },
+
+    groups() {
+      return this.$store.state.groups;
+    },
+
+    lastGroupId() {
+      return this.groups[this.groups.length - 1].gid;
     },
 
     group() {
