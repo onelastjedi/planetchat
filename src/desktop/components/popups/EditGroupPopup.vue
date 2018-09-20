@@ -17,7 +17,7 @@
           <i v-else class="icon-user" />
           <i v-if="isAdmin" class="icon-camera" />
         </div>
-        <span @click="close">&times;</span>
+        <span @click="close('clear')">&times;</span>
       </div>
       <form :class="$style.form">
         <fieldset :disabled="!isAdmin">
@@ -104,11 +104,6 @@ export default {
       return this.group.chat === 1;
     }
   },
-  watch: {
-    isVisible(val) {
-      if (!val) this.clearOptions(this.group.members);
-    }
-  },
   methods: {
     /**
      * Performs file uploading
@@ -160,7 +155,7 @@ export default {
     editGroup(options) {
       this.$socket.emit("putGroupById", options);
     },
-    deleteGroup() {
+    async deleteGroup() {
       this.close();
       this.$socket.emit("deleteGroupById", { group_id: this.groupId });
     },
@@ -204,7 +199,8 @@ export default {
         });
       });
     },
-    close() {
+    close(clear) {
+      if (clear) this.clearOptions(this.group.members);
       this.$store.commit("SET_POPUPS_VISIBILITY", [
         Object.defineProperty({}, this.$options.name, {
           value: false,
