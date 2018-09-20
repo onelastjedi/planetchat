@@ -25,7 +25,7 @@
         <i class="icon-right-arrow" />
       </router-link>
       <router-link
-        :to="{path: '/settings/'}"
+        :to="{path: '/settings'}"
         :class="$style.item"
         :exact-active-class="$style['active-link']"
       >
