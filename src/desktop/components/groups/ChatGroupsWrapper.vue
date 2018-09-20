@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.chatGroups">
+  <div :class="$style.chatGroups" v-if="groups">
     <chat-groups-header />
     <chat-groups-search @search="handleSearchString" />
     <div :class="$style.chatGroupsWrapper">
@@ -17,31 +17,36 @@
 <script>
 export default {
   components: {
-    ChatGroupsHeader: () => import("@/desktop/components/groups/ChatGroupsHeader"),
-    ChatGroupsSearch: () => import("@/desktop/components/groups/ChatGroupsSearch"),
+    ChatGroupsHeader: () =>
+      import("@/desktop/components/groups/ChatGroupsHeader"),
+    ChatGroupsSearch: () =>
+      import("@/desktop/components/groups/ChatGroupsSearch"),
     ChatGroupsItem: () => import("@/desktop/components/groups/ChatGroupsItem")
+  },
+  props: {
+    groups: {
+      type: Array,
+      default: null
+    }
   },
   data: () => ({
     searchString: ""
   }),
-  computed: {
-    groups() {
-      return this.$store.state.groups;
-    }
-  },
   methods: {
     handleSearchString(event) {
       this.searchString = event;
     },
     searched(groups, searchString) {
-      return this.$_
-        .orderBy(groups, ["messages", "messages.0.sd"], ["desc", "desc"])
-        .filter(
-          group =>
-            group.name && searchString
-              ? group.name.toLowerCase().includes(searchString.toLowerCase())
-              : group
-        );
+      return this.$_.orderBy(
+        groups,
+        ["messages", "messages.0.sd"],
+        ["desc", "desc"]
+      ).filter(
+        group =>
+          group.name && searchString
+            ? group.name.toLowerCase().includes(searchString.toLowerCase())
+            : group
+      );
     }
   }
 };
