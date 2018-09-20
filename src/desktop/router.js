@@ -60,36 +60,28 @@ export default new Router({
         isNotifier: true
       }
     },
-    //     {
-    //       path: "/settings/details",
-    //       name: "details",
-    //       component: loadView("Details"),
-    //       beforeEnter: requireAuth,
-    //       meta: {
-    //         isFooter: false,
-    //         isNotifier: true
-    //       }
-    //     },
-    //     {
-    //       path: "/settings/privacy",
-    //       name: "privacy",
-    //       component: loadView("Privacy"),
-    //       beforeEnter: requireAuth,
-    //       meta: {
-    //         isFooter: false,
-    //         isNotifier: true
-    //       }
-    //     },
-    //     {
-    //       path: "/settings/info",
-    //       name: "info",
-    //       component: loadView("Info"),
-    //       beforeEnter: requireAuth,
-    //       meta: {
-    //         isFooter: false,
-    //         isNotifier: true
-    //       }
-    //     },
+    {
+      path: "/settings/details",
+      name: "details",
+      component: loadView("desktop", "Settings"),
+      beforeEnter: requireAuth,
+      meta: {
+        isHeader: true,
+        isFooter: false,
+        isNotifier: true
+      }
+    },
+    {
+      path: "/settings/privacy",
+      name: "privacy",
+      component: loadView("desktop", "Settings"),
+      beforeEnter: requireAuth,
+      meta: {
+        isHeader: true,
+        isFooter: false,
+        isNotifier: true
+      }
+    },
     {
       path: "/login",
       name: "login",
