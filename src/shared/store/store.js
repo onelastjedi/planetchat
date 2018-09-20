@@ -422,12 +422,10 @@ export default new Vuex.Store({
       };
 
       if (!isGroupExist(group)) dispatch("addGroup", group);
-      router.push(`/groups/${group.gid}`);
     },
 
     deleteGroupById: ({ commit, }, payload) => {
       commit("REMOVE_GROUP", payload);
-      router.push("/");
     },
 
     /**
