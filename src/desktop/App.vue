@@ -8,7 +8,7 @@
     <full-screen-image-popup />
     <add-new-contact-popup />
     <weather-popup />
-    <!-- <create-group-popup /> -->
+    <create-group-popup />
     <edit-group-popup />
     <!-- <add-group-members-popup /> -->
     <!-- <user-added-popup /> -->
@@ -27,7 +27,8 @@ export default {
     AddNewContactPopup: () =>
       import("@/desktop/components/popups/AddNewContactPopup"),
     WeatherPopup: () => import("@/desktop/components/popups/WeatherPopup"),
-    // CreateGroupPopup: () => import("@/components/popups/CreateGroupPopup"),
+    CreateGroupPopup: () =>
+      import("@/desktop/components/popups/CreateGroupPopup"),
     EditGroupPopup: () => import("@/desktop/components/popups/EditGroupPopup"),
     // AddGroupMembersPopup: () =>
     //   import("@/components/popups/AddGroupMembersPopup"),
