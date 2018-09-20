@@ -4,14 +4,14 @@
     :class="{ overlayed: isAppOverlayed }"
   >
     <AppHeader v-if="isHeader" />
-    <!-- <notifier /> -->
+    <notifier />
     <full-screen-image-popup />
     <add-new-contact-popup />
     <weather-popup />
     <create-group-popup />
     <edit-group-popup />
-    <!-- <add-group-members-popup /> -->
-    <!-- <user-added-popup /> -->
+    <add-group-members-popup />
+    <user-added-popup />
     <router-view />
   </main>
 </template>
@@ -30,12 +30,12 @@ export default {
     CreateGroupPopup: () =>
       import("@/desktop/components/popups/CreateGroupPopup"),
     EditGroupPopup: () => import("@/desktop/components/popups/EditGroupPopup"),
-    // AddGroupMembersPopup: () =>
-    //   import("@/components/popups/AddGroupMembersPopup"),
-    // UserAddedPopup: () => import("@/components/popups/UserAddedPopup"),
+    AddGroupMembersPopup: () =>
+      import("@/desktop/components/popups/AddGroupMembersPopup"),
+    UserAddedPopup: () => import("@/desktop/components/popups/UserAddedPopup"),
     FullScreenImagePopup: () =>
-      import("@/desktop/components/popups/FullScreenImagePopup")
-    // Notifier: () => import("@/components/common/Notifier")
+      import("@/desktop/components/popups/FullScreenImagePopup"),
+    Notifier: () => import("@/shared/components/Notifier")
   },
   watch: {
     /**
