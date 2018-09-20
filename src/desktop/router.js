@@ -49,16 +49,17 @@ export default new Router({
         isNotifier: true
       }
     },
-    //     {
-    //       path: "/settings",
-    //       name: "settings",
-    //       component: loadView("Settings"),
-    //       beforeEnter: requireAuth,
-    //       meta: {
-    //         isFooter: false,
-    //         isNotifier: true
-    //       }
-    //     },
+    {
+      path: "/settings",
+      name: "settings",
+      component: loadView("desktop", "Settings"),
+      beforeEnter: requireAuth,
+      meta: {
+        isHeader: true,
+        isFooter: false,
+        isNotifier: true
+      }
+    },
     //     {
     //       path: "/settings/details",
     //       name: "details",
