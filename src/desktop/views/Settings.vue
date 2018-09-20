@@ -2,7 +2,7 @@
   <section>
     <div :class="$style.panelBody">
       <settings-wrapper />
-      <info-wrapper />
+      <component v-bind:is="currentComponent"></component>
     </div>
   </section>
 </template>
@@ -21,7 +21,22 @@ export default {
      */
     SettingsWrapper: () =>
       import("@/desktop/components/settings/SettingsWrapper"),
-    InfoWrapper: () => import("@/desktop/components/settings/InfoWrapper")
+    InfoWrapper: () => import("@/desktop/components/settings/InfoWrapper"),
+    PrivacyWrapper: () =>
+      import("@/desktop/components/settings/PrivacyWrapper"),
+    DetailsWrapper: () => import("@/desktop/components/settings/DetailsWrapper")
+  },
+  computed: {
+    currentComponent() {
+      switch (this.$route.path) {
+        case "/settings":
+          return "info-wrapper";
+        case "/settings/privacy":
+          return "privacy-wrapper";
+        case "/settings/details":
+          return "details-wrapper";
+      }
+    }
   }
 };
 </script>
