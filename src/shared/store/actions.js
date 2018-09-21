@@ -187,7 +187,7 @@ export default {
             }
           });
 
-          socket.emit("getOtherInfo", { user_id: uid });
+          socket.emit("getOtherInfo", { user_id: uid, tag: gid });
         }
       }
 
@@ -213,7 +213,7 @@ export default {
         const contacts = payload.uids;
         commit("ADD_USER_CONTACTS", contacts);
         contacts.forEach(user_id => {
-          socket.emit("getOtherInfo", { user_id });
+          socket.emit("getOtherInfo", { user_id, tag: "contacts" });
         });
       }
 
