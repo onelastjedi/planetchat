@@ -74,13 +74,9 @@ export default {
       });
     },
     selectContact(contact) {
-      const user = {
-        ...contact,
-        selected: contact.selected ? false : true
-      };
       this.$store.commit("UPDATE_CONTACT", {
-        contact,
-        user
+        ...contact,
+        selected: !contact.selected
       });
     },
     updateSelectedContacts({ contacts }) {
@@ -104,11 +100,8 @@ export default {
     clearSelection(contacts) {
       contacts.forEach(contact => {
         this.$store.commit("UPDATE_CONTACT", {
-          contact,
-          user: {
-            ...contact,
-            selected: false
-          }
+          ...contact,
+          selected: false
         });
       });
     },
