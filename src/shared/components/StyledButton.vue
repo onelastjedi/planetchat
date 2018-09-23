@@ -1,5 +1,5 @@
 <template>
-  <button :class="type" @click="handleClick"><slot /></button>
+  <button :class="[type, { isMobile: isMobile }]" @click="handleClick"><slot /></button>
 </template>
 
 <script>
@@ -14,6 +14,11 @@ export default {
     type: {
       type: String,
       default: "filled-blue"
+    },
+
+    isMobile: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -39,6 +44,10 @@ export default {
       background #ebf1f5
       color #93a5ba
       cursor not-allowed
+
+  .isMobile
+    height 65px
+    border-radius 25px
 
   .filled-white
     background white
