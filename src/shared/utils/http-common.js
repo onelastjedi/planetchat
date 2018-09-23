@@ -7,9 +7,7 @@ import axios from "axios";
 /**
  * Adds defaults to axios instance
  */
-const HTTP = axios.create({
-  baseURL: localStorage.getItem("planetchat:rest")
-});
+const HTTP = axios;
 /**
  * Export axios instance
  */
