@@ -92,36 +92,39 @@ export default new Router({
         isFooter: true,
         isNotifier: false
       }
+    },
+    {
+      path: "/signup",
+      name: "signup",
+      component: loadView("shared", "Signup"),
+      beforeEnter: rejectAuth,
+      meta: {
+        isHeader: false,
+        isFooter: true,
+        isNotifier: false
+      }
+    },
+    {
+      path: "/forgot",
+      name: "forgot",
+      component: loadView("shared", "Forgot"),
+      beforeEnter: rejectAuth,
+      meta: {
+        isHeader: false,
+        isFooter: true,
+        isNotifier: false
+      }
+    },
+    {
+      path: "/reset",
+      name: "reset",
+      component: loadView("shared", "Reset"),
+      beforeEnter: rejectAuth,
+      meta: {
+        isHeader: false,
+        isFooter: true,
+        isNotifier: false
+      }
     }
-    //     {
-    //       path: "/signup",
-    //       name: "signup",
-    //       component: loadView("Signup"),
-    //       beforeEnter: rejectAuth,
-    //       meta: {
-    //         isFooter: true,
-    //         isNotifier: false
-    //       }
-    //     },
-    //     {
-    //       path: "/forgot",
-    //       name: "forgot",
-    //       component: loadView("Forgot"),
-    //       beforeEnter: rejectAuth,
-    //       meta: {
-    //         isFooter: true,
-    //         isNotifier: false
-    //       }
-    //     },
-    //     {
-    //       path: "/reset",
-    //       name: "reset",
-    //       component: loadView("Reset"),
-    //       beforeEnter: rejectAuth,
-    //       meta: {
-    //         isFooter: true,
-    //         isNotifier: false
-    //       }
-    //     }
   ]
 });
