@@ -3,7 +3,7 @@
  * @since 0.1.0
  * @author Anton Komarenko <mi3ta@sent.as>
  */
-
+import MobileDetect from "mobile-detect";
 /**
  * Async/await version of setTimeout
  * @param {number} ms
@@ -57,4 +57,9 @@ export const hideVirtualKeyboard = () => {
   ) {
     document.activeElement.blur();
   }
+};
+
+export const mobileRedirect = () => {
+  const device = new MobileDetect(window.navigator.userAgent);
+  if (device.mobile()) location.replace("http://m.planetchat.onelastjedi.com");
 };
