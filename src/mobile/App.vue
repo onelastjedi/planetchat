@@ -1,5 +1,5 @@
 <template>
-  <main id="app"
+  <main id="app" class="app_mobile"
     v-if="isConnected"
     :class="{ overlayed: isAppOverlayed }"
   >
