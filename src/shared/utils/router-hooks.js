@@ -4,13 +4,10 @@
  * @author Anton Komarenko <mi3ta@sent.as>
  */
 import { isLoggedIn } from "./auth";
-import { mobileRedirect } from "./helpers-common";
 /**
  * Redirects to login if unauthorized
  */
 export const requireAuth = (to, from, next) => {
-  mobileRedirect();
-
   if (!isLoggedIn()) {
     next({
       path: "/login"
@@ -23,8 +20,6 @@ export const requireAuth = (to, from, next) => {
  * Redirects to index if authorized
  */
 export const rejectAuth = (to, from, next) => {
-  mobileRedirect();
-
   if (isLoggedIn()) {
     next({
       path: "/"

@@ -59,7 +59,7 @@ export const hideVirtualKeyboard = () => {
   }
 };
 
-export const mobileRedirect = () => {
+export const isMobile = () => {
   const device = new MobileDetect(window.navigator.userAgent);
-  if (device.mobile()) location.replace("http://m.planetchat.onelastjedi.com");
+  if (device.mobile()) return true;
 };
