@@ -181,9 +181,9 @@ export const getAppConfig = async () => {
     const {
       data: { restAddress, restPort, socketAddress, socketPort }
     } = await HTTP.get(process.env.VUE_APP_API_CONFIG_URL);
+
     localStorage.setItem("planetchat:rest", `${restAddress}:${restPort}`);
     localStorage.setItem("planetchat:ws", `${socketAddress}:${socketPort}`);
-    return true;
   } catch (error) {
     console.log(error);
   }
