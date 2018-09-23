@@ -184,6 +184,8 @@ export const getAppConfig = async () => {
 
     localStorage.setItem("planetchat:rest", `${restAddress}:${restPort}`);
     localStorage.setItem("planetchat:ws", `${socketAddress}:${socketPort}`);
+
+    HTTP.defaults.baseURL = `${restAddress}:${restPort}`;
   } catch (error) {
     console.log(error);
   }
