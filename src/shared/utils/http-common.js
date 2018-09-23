@@ -8,7 +8,7 @@ import axios from "axios";
  * Adds defaults to axios instance
  */
 const HTTP = axios.create({
-  baseURL: process.env.VUE_APP_API_BASE_URL
+  baseURL: localStorage.getItem("planetchat:rest")
 });
 /**
  * Export axios instance
