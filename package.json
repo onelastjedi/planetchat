@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "serve-desktop": "vue-cli-service serve --port 8080 ./src/desktop/main.js",
-    "serve-mobile": "vue-cli-service serve --port 8090 ./mobile/src/main.js",
+    "serve-mobile": "vue-cli-service serve --port 9090 ./src/mobile/main.js",
     "build": "vue-cli-service build ./src/desktop/main.js --dest ./dist/desktop",
     "lint": "vue-cli-service lint",
     "deploy": "aws s3 sync --delete ./dist/desktop s3://planetchat.onelastjedi.com"
