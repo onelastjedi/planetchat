@@ -40,8 +40,8 @@ export default {
     padding 0
 
     img
-      width 140px
+      width 120px
 
     h1
-      font-size 48px
+      font-size 42px
 </style>
