@@ -44,3 +44,17 @@ export const asyncForEach = async (array, callback) => {
     await callback(array[index], index, array);
   }
 };
+
+/**
+ * Sly way to hide virtual keyboard on
+ * mobile devices
+ */
+export const hideVirtualKeyboard = () => {
+  if (
+    document.activeElement &&
+    document.activeElement.blur &&
+    typeof document.activeElement.blur === "function"
+  ) {
+    document.activeElement.blur();
+  }
+};
