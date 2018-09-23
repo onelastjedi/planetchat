@@ -1,0 +1,132 @@
+// https://developers.google.com/web/updates/2016/12/url-bar-resizing
+
+.auth_mobile
+  position fixed
+  width 100%
+  display grid
+  height 100%
+  padding-top 30px
+  background-image url('@/shared/assets/pattern.png'),
+  linear-gradient(to top, #5997dc 0%, #56b9d6 100%)
+  background-repeat repeat, no-repeat
+  background-position 0 0, 100% 100%
+  background-size auto, cover
+
+.auth_mobile.isKeyboard
+  .header, .footer_mobile_wrapper
+    display none
+
+.header
+  position relative
+  align-self start
+
+.form
+  display block
+  width 80%
+  margin 0 auto
+  align-self baseline
+
+  @media (max-width: 400px)
+    width 80%
+
+  input
+    background transparent
+    color white
+    padding-left 10px
+
+  hr
+    border none
+    height 1px
+    background #7FB9DD
+
+  ::-webkit-input-placeholder
+    color white
+
+  ::-moz-placeholder
+    color white
+
+  :-ms-input-placeholder
+    color white
+
+  :-moz-placeholder
+    color white
+
+  a
+    color white
+    text-align right
+    display block
+    padding 12px 0
+
+  p
+    padding 15px 0
+    text-align center
+    color white
+
+    a
+      display inline
+      font-weight bold
+
+.loginInput_mobile
+  background #7AC4F5
+  display grid
+  grid-template-columns 20px 1fr
+  padding 25px 20px
+  font-size 18px
+  border-top-left-radius 25px
+  border-top-right-radius 25px
+
+  i[class^="icon-user"]
+    line-height 20px
+    color #578FC0
+
+.passwordInput_mobile
+  position relative
+  display grid
+  grid-template-columns 20px 1fr
+  font-size 18px
+  padding 25px 20px
+  background #7AC4F5
+  border-bottom-left-radius 25px
+  border-bottom-right-radius 25px
+  margin-bottom 20px
+
+  i[class^="icon-pass"]
+    line-height 20px
+    color #578FC0
+
+  i[class^="icon-eye"]
+    color #578FC0
+    position absolute
+    top 20px
+    right 7px
+    font-size 15px
+    cursor pointer
+    padding 10px
+
+.error
+  display grid
+  align-items center
+  text-align center
+  color #e83c59
+  font-size 18px
+  height 56px
+  background-color #ffe3e8
+
+.footer_mobile_wrapper
+  position relative
+  bottom 0
+  width 100%
+  margin-top 20px
+  align-self end
+
+.footer_mobile
+  display grid
+  align-items center
+  text-align center
+  font-size 18px
+  height 56px
+  background-color #f5f7fa
+
+  a
+    color #5898dc
+    font-weight 700
