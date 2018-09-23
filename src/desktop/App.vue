@@ -62,6 +62,8 @@ export default {
     }
   },
   async beforeCreate() {
+    await this.$lib.getAppConfig();
+
     /**
      * Opens socket connection and defines
      * list of callbacks, that used in store
