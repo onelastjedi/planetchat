@@ -19,7 +19,7 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: loadView("desktop", "Home"),
+      component: loadView("mobile", "Home"),
       beforeEnter: requireAuth,
       meta: {
         isHeader: true,
@@ -30,7 +30,7 @@ export default new Router({
     {
       path: "/create",
       name: "create",
-      component: loadView("desktop", "Home"),
+      component: loadView("mobile", "Home"),
       beforeEnter: requireAuth,
       meta: {
         isHeader: true,
@@ -41,7 +41,7 @@ export default new Router({
     {
       path: "/groups/:id",
       name: "group",
-      component: loadView("desktop", "Home"),
+      component: loadView("mobile", "Home"),
       beforeEnter: requireAuth,
       meta: {
         isHeader: true,
@@ -52,7 +52,7 @@ export default new Router({
     {
       path: "/settings",
       name: "settings",
-      component: loadView("desktop", "Settings"),
+      component: loadView("mobile", "Settings"),
       beforeEnter: requireAuth,
       meta: {
         isHeader: true,
@@ -63,7 +63,7 @@ export default new Router({
     {
       path: "/settings/details",
       name: "details",
-      component: loadView("desktop", "Settings"),
+      component: loadView("mobile", "Settings"),
       beforeEnter: requireAuth,
       meta: {
         isHeader: true,
@@ -74,7 +74,7 @@ export default new Router({
     {
       path: "/settings/privacy",
       name: "privacy",
-      component: loadView("desktop", "Settings"),
+      component: loadView("mobile", "Settings"),
       beforeEnter: requireAuth,
       meta: {
         isHeader: true,
@@ -85,7 +85,7 @@ export default new Router({
     {
       path: "/login",
       name: "login",
-      component: loadView("shared", "Login"),
+      component: loadView("mobile", "Login"),
       beforeEnter: rejectAuth,
       meta: {
         isHeader: false,
@@ -96,7 +96,7 @@ export default new Router({
     {
       path: "/signup",
       name: "signup",
-      component: loadView("shared", "Signup"),
+      component: loadView("mobile", "Signup"),
       beforeEnter: rejectAuth,
       meta: {
         isHeader: false,
@@ -107,7 +107,7 @@ export default new Router({
     {
       path: "/forgot",
       name: "forgot",
-      component: loadView("shared", "Forgot"),
+      component: loadView("mobile", "Forgot"),
       beforeEnter: rejectAuth,
       meta: {
         isHeader: false,
@@ -118,7 +118,7 @@ export default new Router({
     {
       path: "/reset",
       name: "reset",
-      component: loadView("shared", "Reset"),
+      component: loadView("mobile", "Reset"),
       beforeEnter: rejectAuth,
       meta: {
         isHeader: false,
