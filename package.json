@@ -9,9 +9,9 @@
   "scripts": {
     "serve-desktop": "vue-cli-service serve --port 8080 ./src/desktop/main.js",
     "serve-mobile": "vue-cli-service serve --port 9090 ./src/mobile/main.js",
-    "build": "vue-cli-service build ./src/desktop/main.js --dest ./dist/desktop",
+    "build": "vue-cli-service build ./src/desktop/main.js --dest ./dist/desktop && vue-cli-service build ./src/mobile/main.js --dest ./dist/mobile",
     "lint": "vue-cli-service lint",
-    "deploy": "aws s3 sync --delete ./dist/desktop s3://planetchat.onelastjedi.com"
+    "deploy": "aws s3 sync --delete ./dist/desktop s3://planetchat.onelastjedi.com && aws s3 sync --delete ./dist/mobile s3://m.planetchat.onelastjedi.com"
   },
   "dependencies": {
     "axios": "^0.18.0",
