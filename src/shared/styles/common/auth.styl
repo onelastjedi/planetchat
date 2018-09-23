@@ -1,159 +1,157 @@
 .auth
-  display block
   min-width 360px
   height 100%
   display grid
   grid-template-rows auto 56px
 
-  .wrapper
-    background-image url('@/shared/assets/login_pic_1.png'),
-      url('@/shared/assets/login_pic_2.png'),
-      url('@/shared/assets/pattern.png'),
+.wrapper
+  background-image url('@/shared/assets/login_pic_1.png'),
+    url('@/shared/assets/login_pic_2.png'),
+    url('@/shared/assets/pattern.png'),
+    linear-gradient(to top, #5997dc 0%, #56b9d6 100%)
+  background-repeat no-repeat, no-repeat, repeat, no-repeat
+  background-position 1% 100%, 97% 100%, 0 0, 100% 100%
+  background-size 570px, 700px, auto, cover
+
+  @media (max-width: 980px)
+    background-position -100px 100%, 130% 100%, 0 0, 100% 100%
+
+  @media (max-width: 760px)
+    background-image url('@/shared/assets/pattern.png'),
       linear-gradient(to top, #5997dc 0%, #56b9d6 100%)
-    background-repeat no-repeat, no-repeat, repeat, no-repeat
-    background-position 1% 100%, 97% 100%, 0 0, 100% 100%
-    background-size 570px, 700px, auto, cover
+    background-repeat repeat, no-repeat
+    background-position 0 0, 100% 100%
+    background-size auto, cover
 
-    @media (max-width: 980px)
-      background-position -100px 100%, 130% 100%, 0 0, 100% 100%
+.error
+  padding 15px 20px
+  margin 10px 0
+  background-color #ffdce0
+  border-radius 5px
+  color #86181d
 
-    @media (max-width: 760px)
-      background-image url('@/shared/assets/pattern.png'),
-        linear-gradient(to top, #5997dc 0%, #56b9d6 100%)
-      background-repeat repeat, no-repeat
-      background-position 0 0, 100% 100%
-      background-size auto, cover
+form
+  display block
+  width 340px
+  margin 0 auto
 
-  .error
-    padding 15px 20px
-    margin 10px 0
-    background-color #ffdce0
-    border-radius 5px
-    color #86181d
+  @media (max-width: 400px)
+    width 80%
 
-  form
+  input
+    background transparent
+    color white
+    padding-left 10px
+
+  hr
+    border none
+    height 1px
+    background #7FB9DD
+
+  ::-webkit-input-placeholder
+    color white
+
+  ::-moz-placeholder
+    color white
+
+  :-ms-input-placeholder
+    color white
+
+  :-moz-placeholder
+    color white
+
+  a
+    color white
+    text-align right
     display block
-    width 340px
-    margin 0 auto
+    padding 12px 0
 
-
-    @media (max-width: 400px)
-      width 80%
-
-    .loginInput
-      display grid
-      grid-template-columns auto 1fr
-      padding 15px 15px
-      background #8AC5E3
-      border-top-left-radius 15px
-      border-top-right-radius 15px
-
-      i[class^="icon-user"]
-        line-height 20px
-        color #578FC0
-
-    .loginInputReset
-      display grid
-      grid-template-columns auto 1fr
-      padding 15px 15px
-      background #8AC5E3
-      border-bottom-left-radius 15px
-      border-bottom-right-radius 15px
-      margin-bottom 15px
-
-      i[class^="icon-user"]
-        line-height 20px
-        color #578FC0
-
-    .emailInput
-      display grid
-      grid-template-columns auto 1fr
-      padding 15px 15px
-      background #8AC5E3
-      border-radius 15px
-      margin-bottom 15px
-
-      i[class^="icon-user"]
-        line-height 20px
-        color #578FC0
-
-    .passwordInput
-      position relative
-      display grid
-      grid-template-columns auto 1fr
-      padding 15px 15px
-      background #8AC5E3
-      border-bottom-left-radius 15px
-      border-bottom-right-radius 15px
-
-      i[class^="icon-pass"]
-        line-height 20px
-        color #578FC0
-
-      i[class^="icon-eye"]
-        color #578FC0
-        position absolute
-        top 10px
-        right 5px
-        font-size 13px
-        cursor pointer
-        padding 10px
-
-    .passwordInputReset
-      position relative
-      display grid
-      grid-template-columns auto 1fr
-      padding 15px 15px
-      background #8AC5E3
-      border-top-left-radius 15px
-      border-top-right-radius 15px
-
-      i[class^="icon-pass"]
-        line-height 20px
-        color #578FC0
-
-      i[class^="icon-eye"]
-        color #578FC0
-        position absolute
-        top 10px
-        right 5px
-        font-size 13px
-        cursor pointer
-        padding 10px
-
-    input
-      background transparent
-      color white
-      padding-left 10px
-
-    hr
-      border none
-      height 1px
-      background #7FB9DD
-
-    ::-webkit-input-placeholder
-      color white
-
-    ::-moz-placeholder
-      color white
-
-    :-ms-input-placeholder
-      color white
-
-    :-moz-placeholder
-      color white
+  p
+    padding 15px 0
+    text-align center
+    color white
 
     a
-      color white
-      text-align right
-      display block
-      padding 12px 0
+      display inline
+      font-weight bold
 
-    p
-      padding 15px 0
-      text-align center
-      color white
+.loginInput
+  display grid
+  grid-template-columns auto 1fr
+  padding 15px 15px
+  background #8AC5E3
+  border-top-left-radius 15px
+  border-top-right-radius 15px
 
-      a
-        display inline
-        font-weight bold
+  i[class^="icon-user"]
+    line-height 20px
+    color #578FC0
+
+.loginInputReset
+  display grid
+  grid-template-columns auto 1fr
+  padding 15px 15px
+  background #8AC5E3
+  border-bottom-left-radius 15px
+  border-bottom-right-radius 15px
+  margin-bottom 15px
+
+  i[class^="icon-user"]
+    line-height 20px
+    color #578FC0
+
+.emailInput
+  display grid
+  grid-template-columns auto 1fr
+  padding 15px 15px
+  background #8AC5E3
+  border-radius 15px
+  margin-bottom 15px
+
+  i[class^="icon-user"]
+    line-height 20px
+    color #578FC0
+
+.passwordInput
+  position relative
+  display grid
+  grid-template-columns auto 1fr
+  padding 15px 15px
+  background #8AC5E3
+  border-bottom-left-radius 15px
+  border-bottom-right-radius 15px
+
+  i[class^="icon-pass"]
+    line-height 20px
+    color #578FC0
+
+  i[class^="icon-eye"]
+    color #578FC0
+    position absolute
+    top 10px
+    right 5px
+    font-size 13px
+    cursor pointer
+    padding 10px
+
+.passwordInputReset
+  position relative
+  display grid
+  grid-template-columns auto 1fr
+  padding 15px 15px
+  background #8AC5E3
+  border-top-left-radius 15px
+  border-top-right-radius 15px
+
+  i[class^="icon-pass"]
+    line-height 20px
+    color #578FC0
+
+  i[class^="icon-eye"]
+    color #578FC0
+    position absolute
+    top 10px
+    right 5px
+    font-size 13px
+    cursor pointer
+    padding 10px
