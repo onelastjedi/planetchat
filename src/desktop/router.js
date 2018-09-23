@@ -85,7 +85,7 @@ export default new Router({
     {
       path: "/login",
       name: "login",
-      component: loadView("shared", "Login"),
+      component: loadView("desktop", "Login"),
       beforeEnter: rejectAuth,
       meta: {
         isHeader: false,
@@ -96,7 +96,7 @@ export default new Router({
     {
       path: "/signup",
       name: "signup",
-      component: loadView("shared", "Signup"),
+      component: loadView("desktop", "Signup"),
       beforeEnter: rejectAuth,
       meta: {
         isHeader: false,
@@ -107,7 +107,7 @@ export default new Router({
     {
       path: "/forgot",
       name: "forgot",
-      component: loadView("shared", "Forgot"),
+      component: loadView("desktop", "Forgot"),
       beforeEnter: rejectAuth,
       meta: {
         isHeader: false,
@@ -118,7 +118,7 @@ export default new Router({
     {
       path: "/reset",
       name: "reset",
-      component: loadView("shared", "Reset"),
+      component: loadView("desktop", "Reset"),
       beforeEnter: rejectAuth,
       meta: {
         isHeader: false,
