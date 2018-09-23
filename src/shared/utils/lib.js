@@ -10,7 +10,13 @@ import {
   resetPassword,
   photoUrl
 } from "./auth";
-import { delay, log, isUpperCase, asyncForEach } from "./helpers-common";
+import {
+  delay,
+  log,
+  isUpperCase,
+  asyncForEach,
+  hideVirtualKeyboard
+} from "./helpers-common";
 import { base64, parseSystemMessage, datetime } from "./messages-common";
 import HTTP from "./http-common";
 
@@ -32,6 +38,7 @@ export default {
   log,
   isUpperCase,
   asyncForEach,
+  hideVirtualKeyboard,
 
   /* Messages */
   base64,
