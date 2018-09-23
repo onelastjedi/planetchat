@@ -1,4 +1,5 @@
 import {
+  getAppConfig,
   currentUserSession,
   currentUserUID,
   getRotatedPhotoAsBase64String,
@@ -15,6 +16,7 @@ import HTTP from "./http-common";
 
 export default {
   /* Auth */
+  getAppConfig,
   currentUserSession,
   currentUserUID,
   getRotatedPhotoAsBase64String,
