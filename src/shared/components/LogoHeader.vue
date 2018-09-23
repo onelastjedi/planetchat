@@ -37,6 +37,8 @@ export default {
       font-size 19px
 
   .mobile
+    padding 0
+
     img
       width 140px
 
