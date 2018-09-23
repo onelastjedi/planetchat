@@ -94,4 +94,4 @@ class Socket {
 }
 
 /* Creates new class instance end export it */
-export default new Socket(process.env.VUE_APP_API_BASE_URL);
+export default new Socket(localStorage.getItem("planetchat:ws"));
