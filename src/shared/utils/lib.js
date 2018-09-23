@@ -15,7 +15,8 @@ import {
   log,
   isUpperCase,
   asyncForEach,
-  hideVirtualKeyboard
+  hideVirtualKeyboard,
+  mobileRedirect
 } from "./helpers-common";
 import { base64, parseSystemMessage, datetime } from "./messages-common";
 import HTTP from "./http-common";
@@ -39,6 +40,7 @@ export default {
   isUpperCase,
   asyncForEach,
   hideVirtualKeyboard,
+  mobileRedirect,
 
   /* Messages */
   base64,
