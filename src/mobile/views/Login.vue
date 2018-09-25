@@ -1,7 +1,7 @@
 <template>
   <div :class="[$style.auth_mobile, {[$style.isKeyboard]: isKeyboard }]">
     <div :class="$style.header"><logo-header :isMobile="true" /></div>
-    <form :class="$style.form" @submit.stop.prevent="handleSubmit({ account, password })">
+    <form :class="[$style.form, {[$style.error]: error }]" @submit.stop.prevent="handleSubmit({ account, password })">
       <div :class="$style.loginInput_mobile">
         <i class="icon-user" />
         <input
