@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import { requireAuth, rejectAuth } from "@/shared/utils/router-hooks";
+import lib from "@/shared/utils/lib";
 
 Vue.use(Router);
 
@@ -9,7 +10,7 @@ const loadView = (folder, view) => {
     import(/* webpackChunkName: "view-[request]" */ `@/${folder}/views/${view}.vue`);
 };
 
-export default new Router({
+const router = new Router({
   mode: "history",
   /* eslint-disable-next-line */
   scrollBehavior(to, from, savedPosition) {
@@ -128,3 +129,11 @@ export default new Router({
     }
   ]
 });
+
+/* eslint-disable-next-line */
+router.beforeEach((to, from, next ) => {
+  if (lib.isMobile()) location.replace("http://m.planetchat.onelastjedi.com");
+  else next();
+});
+
+export default router;
