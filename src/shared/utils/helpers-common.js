@@ -59,7 +59,9 @@ export const hideVirtualKeyboard = () => {
   }
 };
 
+/* Detect if app opened from mobile browser */
 export const isMobile = () => {
   const device = new MobileDetect(window.navigator.userAgent);
   if (device.mobile()) return true;
+  return false;
 };
