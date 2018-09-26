@@ -46,8 +46,9 @@ export default {
       cursor not-allowed
 
   .isMobile
-    height 65px
-    border-radius 25px
+    height 65px!important
+    border-radius 25px!important
+    font-size 19px!important
 
   .filled-white
     background white
@@ -65,9 +66,9 @@ export default {
     border 1px solid #d4dbe3
 
   .transparent
-     border 2px solid white
-     background transparent
-     color white
+    border 2px solid white
+    background transparent
+    color white
 
   .transparent-icon
     color white
@@ -86,6 +87,9 @@ export default {
     border-radius 15px
     font-size 14px
     color white
+
+    &:disabled
+      border 1px solid #d4dbe3
 
   .filled-blue-sm
     background linear-gradient(0deg, #5997dc 0%, #56b9d6 100%)
