@@ -24,7 +24,6 @@
           <p v-html="format(text)" />
           <i v-if="isDelivered(dr)" class="icon-sent-checkmark" />
           <i v-if="isRead(dr)" class="icon-seen-checkmark" />
-          <i class="icon-chat-link" />
         </a>
         <div v-else>
           <p v-html="format(text)" />
@@ -113,7 +112,7 @@ export default {
      * @returns {string} Formatted text
      */
     format(text) {
-      return text.replace(/\n/g, "<br />");
+      return text.replace(/\n/g, "<br />") + '<i class="icon-chat-link" />';
     },
 
     getLink(lk) {
@@ -190,7 +189,7 @@ export default {
       position relative
       background linear-gradient(0deg, #5997dc 0%, #56b9d6 100%)
       color white
-      padding 15px 20px
+      padding 15px 35px 15px 20px
       line-height 1.3
       border-bottom-right-radius 0
       border-bottom-left-radius 20px
