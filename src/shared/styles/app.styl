@@ -30,6 +30,10 @@ main
 
 main.app_mobile
   min-width 320px
+  /* Disables pull-to-refresh but allows overscroll glow effects. */
+  /* https://developers.google.com/web/updates/2017/11/overscroll-behavior */
+  overscroll-behavior-y contain
+  touch-action none
 
 main.overlayed
   user-select none
