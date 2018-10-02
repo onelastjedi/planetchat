@@ -1,24 +1,17 @@
 // https://developers.google.com/web/updates/2016/12/url-bar-resizing
 
 .auth_mobile
-  position fixed
-  width 100%
-  display grid
-  height 100%
   padding-top 30px
+  position relative
   background-image url('@/shared/assets/pattern.png'),
   linear-gradient(to top, #5997dc 0%, #56b9d6 100%)
   background-repeat repeat, no-repeat
   background-position 0 0, 100% 100%
   background-size auto, cover
 
-.auth_mobile.isKeyboard
-  .header, .footer_mobile_wrapper
-    display none
-
 .header
+  padding-bottom 30px
   position relative
-  align-self start
 
 .form.error
   background transparent
@@ -43,7 +36,6 @@
   display block
   width 80%
   margin 0 auto
-  align-self baseline
 
   @media (max-width: 400px)
     width 80%
@@ -132,11 +124,10 @@
   background-color #ffe3e8
 
 .footer_mobile_wrapper
-  position relative
+  position absolute
   bottom 0
   width 100%
   margin-top 20px
-  align-self end
 
 .footer_mobile
   display grid
