@@ -1,6 +1,6 @@
 <template>
-  <div :class="[$style.auth_mobile, {[$style.isKeyboard]: isKeyboard }]">
-    <div :class="$style.header"><logo-header :isMobile="true" /></div>
+  <div :class="$style.auth_mobile" :style="{height: elHeight + 'px'}">
+    <div :class="$style.header" v-if="!isKeyboard"><logo-header :isMobile="true" /></div>
     <form :class="[$style.form, {[$style.error]: error }]" @submit.stop.prevent="handleSubmit({ account, password })">
       <div :class="$style.loginInput_mobile">
         <i class="icon-user" />
@@ -43,6 +43,7 @@
  * @since 0.1.0
  * @author Anton Komarenko <mi3ta@sent.as>
  */
+import { disableBodyScroll } from "body-scroll-lock";
 export default {
   components: {
     /**
@@ -96,6 +97,7 @@ export default {
 
     /* Sets layout when keyboard appears */
     setTypeMode(mode) {
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
       this.isKeyboard = mode;
     },
 
@@ -124,11 +126,12 @@ export default {
   },
 
   mounted() {
-    this.elHeight = this.$el.clientHeight;
+    disableBodyScroll(window.document.body);
+    this.elHeight = window.innerHeight;
     window.addEventListener("resize", this.handleResize);
   },
 
-  beforeDestroy: function() {
+  beforeDestroy() {
     window.removeEventListener("resize", this.handleResize);
   }
 };
