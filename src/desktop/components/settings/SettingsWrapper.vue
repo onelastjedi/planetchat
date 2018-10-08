@@ -16,12 +16,30 @@
         <i class="icon-right-arrow" />
       </router-link>
       <router-link
-        :to="{path: '/settings/privacy'}"
+        :to="{path: '/'}"
         :class="$style.item"
         :exact-active-class="$style['active-link']"
       >
         <i class="icon-pass" />
-        Privacy
+        Privacy and Location sharing
+        <i class="icon-right-arrow" />
+      </router-link>
+      <router-link
+        :to="{path: '/settings/satellite'}"
+        :class="$style.item"
+        :exact-active-class="$style['active-link']"
+      >
+        <i class="icon-pass" />
+        Satellite Settings
+        <i class="icon-right-arrow" />
+      </router-link>
+      <router-link
+        :to="{path: '/'}"
+        :class="$style.item"
+        :exact-active-class="$style['active-link']"
+      >
+        <i class="icon-attention" />
+        Emergency Response Settings
         <i class="icon-right-arrow" />
       </router-link>
       <router-link
@@ -30,7 +48,16 @@
         :exact-active-class="$style['active-link']"
       >
         <i class="icon-info" />
-        Info
+        About
+        <i class="icon-right-arrow" />
+      </router-link>
+      <router-link
+        :to="{path: '/settings/privacy'}"
+        :class="$style.item"
+        :exact-active-class="$style['active-link']"
+      >
+        <i class="icon-pass" />
+        Privacy Policy
         <i class="icon-right-arrow" />
       </router-link>
     </div>
@@ -98,5 +125,8 @@ export default {
       font-size 10px
 
     i[class^="icon-info"]
-      font-size 14px
+      color #89BA00
+
+    i[class^="icon-attention"]
+      color #E5344E
 </style>
