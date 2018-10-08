@@ -84,6 +84,17 @@ const router = new Router({
       }
     },
     {
+      path: "/settings/satellite",
+      name: "satellite",
+      component: loadView("desktop", "Settings"),
+      beforeEnter: requireAuth,
+      meta: {
+        isHeader: true,
+        isFooter: false,
+        isNotifier: true
+      }
+    },
+    {
       path: "/login",
       name: "login",
       component: loadView("desktop", "Login"),
