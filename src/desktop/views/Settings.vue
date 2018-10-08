@@ -24,7 +24,10 @@ export default {
     InfoWrapper: () => import("@/desktop/components/settings/InfoWrapper"),
     PrivacyWrapper: () =>
       import("@/desktop/components/settings/PrivacyWrapper"),
-    DetailsWrapper: () => import("@/desktop/components/settings/DetailsWrapper")
+    DetailsWrapper: () =>
+      import("@/desktop/components/settings/DetailsWrapper"),
+    SatelliteWrapper: () =>
+      import("@/desktop/components/settings/SatelliteWrapper")
   },
   computed: {
     currentComponent() {
@@ -35,6 +38,8 @@ export default {
           return "privacy-wrapper";
         case "/settings/details":
           return "details-wrapper";
+        case "/settings/satellite":
+          return "satellite-wrapper";
       }
     }
   }
