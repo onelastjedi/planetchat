@@ -6,7 +6,7 @@
         Hardware
         <styled-button
           type="filled-blue-sm"
-          @click="addNewHardware"
+          @click="openWizard('SatelliteDeviceInfo')"
         >
           Add New Hardware
         </styled-button>
@@ -18,14 +18,14 @@
         <div>
           <styled-button
             type="filled-blue-sm"
-            @click="changePaymentMethod"
+            @click="openWizard('SatellitePaymentDetails')"
           >
             Change Payment Method
           </styled-button>
         </div>
         <styled-button
           type="bordered-blue-sm"
-          @click="changePlan"
+          @click="openWizard('SatelliteChoosePlan')"
         >
           Change Plan
         </styled-button>
@@ -51,19 +51,13 @@ export default {
     StyledButton: () => import("@/shared/components/StyledButton")
   },
   methods: {
-    addNewHardware() {
+    openWizard(tabName) {
       this.$store.commit("SET_POPUPS_VISIBILITY", [
-        Object.defineProperty({}, "SatelliteDeviceInfo", {
+        Object.defineProperty({}, tabName, {
           value: true,
           writable: false
         })
       ]);
-    },
-    changePaymentMethod() {
-      console.log("ChangePaymentMethod");
-    },
-    changePlan() {
-      console.log("ChangePlan");
     },
     deactivate() {
       console.log("Deactivate");
