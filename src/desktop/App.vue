@@ -12,6 +12,7 @@
     <edit-group-popup />
     <add-group-members-popup />
     <user-added-popup />
+    <satellite-device-info-popup />
     <router-view />
   </main>
 </template>
@@ -35,6 +36,8 @@ export default {
     UserAddedPopup: () => import("@/desktop/components/popups/UserAddedPopup"),
     FullScreenImagePopup: () =>
       import("@/desktop/components/popups/FullScreenImagePopup"),
+    SatelliteDeviceInfoPopup: () =>
+      import("@/desktop/components/popups/SatelliteDeviceInfoPopup"),
     Notifier: () => import("@/shared/components/Notifier")
   },
   watch: {
