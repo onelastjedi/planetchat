@@ -22,7 +22,8 @@ export default {
     EditGroup: false,
     AddGroupMembers: false,
     UserAdded: false,
-    FullScreenImage: false
+    FullScreenImage: false,
+    SatelliteDeviceInfo: false
   },
 
   /* Errors related */
