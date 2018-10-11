@@ -14,6 +14,7 @@
     <user-added-popup />
     <satellite-device-info-popup />
     <satellite-choose-plan-popup />
+    <satellite-payment-details />
     <router-view />
   </main>
 </template>
@@ -41,6 +42,8 @@ export default {
       import("@/desktop/components/popups/SatelliteDeviceInfoPopup"),
     SatelliteChoosePlanPopup: () =>
       import("@/desktop/components/popups/SatelliteChoosePlanPopup"),
+    SatellitePaymentDetails: () =>
+      import("@/desktop/components/popups/SatellitePaymentDetails"),
     Notifier: () => import("@/shared/components/Notifier")
   },
   watch: {
