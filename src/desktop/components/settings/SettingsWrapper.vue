@@ -16,11 +16,11 @@
         <i class="icon-right-arrow" />
       </router-link>
       <router-link
-        :to="{path: '/'}"
+        :to="{path: '/settings/privacy'}"
         :class="$style.item"
         :exact-active-class="$style['active-link']"
       >
-        <i class="icon-pass" />
+        <i class="icon-location-sharing" />
         Privacy and Location sharing
         <i class="icon-right-arrow" />
       </router-link>
@@ -29,7 +29,7 @@
         :class="$style.item"
         :exact-active-class="$style['active-link']"
       >
-        <i class="icon-pass" />
+        <i class="icon-satellite" />
         Satellite Settings
         <i class="icon-right-arrow" />
       </router-link>
@@ -52,11 +52,11 @@
         <i class="icon-right-arrow" />
       </router-link>
       <router-link
-        :to="{path: '/settings/privacy'}"
+        :to="{path: '/'}"
         :class="$style.item"
         :exact-active-class="$style['active-link']"
       >
-        <i class="icon-pass" />
+        <i class="icon-privacy-policy" />
         Privacy Policy
         <i class="icon-right-arrow" />
       </router-link>
@@ -104,6 +104,9 @@ export default {
   .item.active-link
     background-color #f3f7f9
 
+    i[class^="icon-right-arrow"]
+      color #508CBF
+
   .item
     position relative
     display grid
@@ -119,7 +122,7 @@ export default {
       overflow hidden
 
     i
-      color #57abd8
+      color #DCE1E7
 
     i[class^="icon-right-arrow"]
       font-size 10px
@@ -129,4 +132,15 @@ export default {
 
     i[class^="icon-attention"]
       color #E5344E
+
+    i[class^="icon-location-sharing"]
+      color #25C4A4
+      font-size 18px
+
+    i[class^="icon-satellite"]
+      color #6441B9
+      font-size 15px
+
+    i[class^="icon-privacy-policy"]
+      color #57abd8
 </style>
