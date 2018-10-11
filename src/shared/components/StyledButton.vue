@@ -54,6 +54,14 @@ export default {
     background white
     color #578FC0
 
+  .filled-white-sm
+    border 2px solid white
+    background transparent
+    color #94A5BD
+    font-size 12px
+    padding 10px 20px
+    height auto
+
   .gradient-red
     background linear-gradient(0deg, #e74c3c 0%, #e74560 100%)
     color white
