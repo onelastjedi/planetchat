@@ -95,8 +95,24 @@ export default {
     background linear-gradient(0deg, #5997dc 0%, #56b9d6 100%)
     border-radius 20px
     font-size 12px
-    padding 10px 15px
+    padding 12px 20px
     color white
     height auto
+
+  .bordered-red-sm
+    background transparent
+    font-size 12px
+    border 2px solid #EE6557
+    padding 10px 20px
+    height auto
+    border-radius 20px
+
+  .bordered-blue-sm
+    background transparent
+    font-size 12px
+    border 2px solid #69A1E4
+    padding 10px 20px
+    height auto
+    border-radius 20px
 
 </style>
