@@ -11,10 +11,43 @@
         <div @click="changeSlide('SatellitePaymentDetails')"></div>
       </div>
       <div :class="$style.content">
-        <label>Your device IMEI number</label>
-        <input type="text" placeholder="Type Here..." />
-        <label>Serial Number</label>
-        <input type="text" placeholder="Type here..." />
+        <div :class="$style.contentSlider">
+          <label :class="$style.checkboxContainer">
+            <input type="radio" name="plan">
+            <span :class="$style.checkmark" />
+            Lorem ipsum dolor
+          </label>
+          <label :class="$style.checkboxContainer">
+            <input type="radio" name="plan">
+            <span :class="$style.checkmark" />
+            Sit amet consectetur
+          </label>
+          <label :class="$style.checkboxContainer">
+            <input type="radio" name="plan">
+            <span :class="$style.checkmark" />
+            Sed do eiusmod
+          </label>
+          <label :class="$style.checkboxContainer">
+            <input type="radio" name="plan">
+            <span :class="$style.checkmark" />
+            Tempor incididunt
+          </label>
+          <label :class="$style.checkboxContainer">
+            <input type="radio" name="plan">
+            <span :class="$style.checkmark" />
+            Ut enim ad
+          </label>
+          <label :class="$style.checkboxContainer">
+            <input type="radio" name="plan">
+            <span :class="$style.checkmark" />
+            Duis aute irure
+          </label>
+          <label :class="$style.checkboxContainer">
+            <input type="radio" name="plan">
+            <span :class="$style.checkmark" />
+            Excepteur sint
+          </label>
+        </div>
       </div>
       <div :class="$style.footer">
         <styled-button
@@ -130,31 +163,18 @@ export default {
       cursor pointer
 
   .content
-    padding 10px 5px
+    position relative
+    padding 20px 10px 20px 20px
+    background-color #ecf1f5
+    border-radius 15px
+    height 190px
+    margin-bottom 12px
 
-    ::-webkit-input-placeholder
-      color #93a5ba
-
-    ::-moz-placeholder
-      color #93a5ba
-
-    :-ms-input-placeholder
-      color #93a5ba
-
-    :-moz-placeholder
-      color #93a5ba
-
-    label
-      padding 0 0 0 20px
-      color #93a5ba
-
-    input
-      display block
-      width 100%
-      background-color #ECF1F5
-      padding 15px 20px
-      border-radius 15px
-      margin 10px 0 15px
+  .contentSlider
+    padding-left 20px
+    height 160px
+    position relative
+    overflow scroll
 
   .footer
     display grid
@@ -164,4 +184,51 @@ export default {
 
     button
       text-transform none!important
+
+  .checkboxContainer
+    display block
+    position relative
+    margin-bottom 20px
+    height 20px
+    -webkit-user-select none
+    -moz-user-select none
+    -ms-user-select none
+    user-select none
+
+    &:last-child
+      margin-bottom 0
+
+    input
+      opacity 0
+
+    input:checked ~ .checkmark:after
+      display block
+
+    input:checked ~ .checkmark
+      background-color #5398E0
+
+    .checkmark
+      cursor pointer
+      position absolute
+      top 0
+      left 0
+      bottom 0
+      right 0
+      margin-left -20px
+      height 20px
+      width 20px
+      border-radius 7px
+      background-color #fff
+
+      &:after
+        content ""
+        position absolute
+        display none
+        left 7px
+        top 4px
+        width 4px
+        height 8px
+        border solid #fff
+        border-width 0 2px 2px 0
+        transform rotate(45deg)
 </style>
