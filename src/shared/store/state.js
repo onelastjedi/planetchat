@@ -24,7 +24,8 @@ export default {
     UserAdded: false,
     FullScreenImage: false,
     SatelliteDeviceInfo: false,
-    SatelliteChoosePlan: false
+    SatelliteChoosePlan: false,
+    SatellitePaymentDetails: false
   },
 
   /* Errors related */
