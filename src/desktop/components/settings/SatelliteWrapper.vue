@@ -52,7 +52,12 @@ export default {
   },
   methods: {
     addNewHardware() {
-      console.log("AddNewHardware");
+      this.$store.commit("SET_POPUPS_VISIBILITY", [
+        Object.defineProperty({}, "SatelliteDeviceInfo", {
+          value: true,
+          writable: false
+        })
+      ]);
     },
     changePaymentMethod() {
       console.log("ChangePaymentMethod");
