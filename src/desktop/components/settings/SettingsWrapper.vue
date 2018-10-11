@@ -97,6 +97,7 @@ export default {
     border-bottom-left-radius 15px
     border-bottom-right-radius 15px
     overflow hidden
+    padding-bottom 10px
 
     @media (max-width: 960px)
       border-radius 0
