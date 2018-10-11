@@ -11,10 +11,21 @@
         <div :class="$style.active"></div>
       </div>
       <div :class="$style.content">
-        <label>Your device IMEI number</label>
-        <input type="text" placeholder="Type Here..." />
-        <label>Serial Number</label>
-        <input type="text" placeholder="Type here..." />
+        <label>Credit Card Number</label>
+        <input type="text" placeholder="Valid Card Number" />
+        <div :class="$style.row">
+          <div>
+            <label>Expiration Date</label>
+            <div :class="$style.row">
+              <input type="text" placeholder="MM" />
+              <input type="text" placeholder="YY" />
+            </div>
+          </div>
+          <div>
+            <label>CVV</label>
+            <input type="text" placeholder="Type here..." />
+          </div>
+        </div>
       </div>
       <div :class="$style.footer">
         <styled-button
@@ -155,6 +166,22 @@ export default {
       padding 15px 20px
       border-radius 15px
       margin 10px 0 15px
+
+  .row
+    display grid
+    grid-column-gap 10px
+    grid-template-columns 1fr 1fr
+
+    // label
+    //   padding 0
+
+    //   span
+    //     padding-left 20px
+
+    // div
+    //   display grid
+    //   grid-column-gap 10px
+    //   grid-template-columns 1fr 1fr
 
   .footer
     display grid
