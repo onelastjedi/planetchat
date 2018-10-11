@@ -23,7 +23,8 @@ export default {
     AddGroupMembers: false,
     UserAdded: false,
     FullScreenImage: false,
-    SatelliteDeviceInfo: false
+    SatelliteDeviceInfo: false,
+    SatelliteChoosePlan: false
   },
 
   /* Errors related */
