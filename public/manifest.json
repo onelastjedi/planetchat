@@ -3,6 +3,7 @@
   "description": "",
   "short_name": "Planetchat",
   "display": "standalone",
+  "orientation": "portrait",
   "theme_color": "#56b9d6",
   "start_url": "/",
   "scope": "/",
