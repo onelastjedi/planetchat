@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.auth_mobile" :style="{height: elHeight + 'px'}">
-    <div :class="$style.header" v-if="!isKeyboard"><logo-header :isMobile="true" /></div>
+    <div :class="$style.header"><logo-header :isMobile="true" /></div>
     <form :class="[$style.form, {[$style.error]: error }]" @submit.stop.prevent="handleSubmit({ account, password })">
       <div :class="$style.loginInput_mobile">
         <i class="icon-user" />
@@ -9,8 +9,6 @@
           :disabled="disableInputs"
           placeholder="Username or email"
           v-model.trim="account"
-          @focus="setTypeMode(true)"
-          @blur="setTypeMode(false)"
         />
       </div>
       <hr>
@@ -21,8 +19,6 @@
           :disabled="disableInputs"
           v-model.trim="password"
           placeholder="Password"
-          @focus="setTypeMode(true)"
-          @blur="setTypeMode(false)"
         />
         <i class="icon-eye" @click="toggleShowPassord" />
       </div>
@@ -43,7 +39,6 @@
  * @since 0.1.0
  * @author Anton Komarenko <mi3ta@sent.as>
  */
-import { disableBodyScroll } from "body-scroll-lock";
 export default {
   components: {
     /**
@@ -67,9 +62,6 @@ export default {
 
     /* Login password */
     password: null,
-
-    /* Is mobile keyboard presented on screen */
-    isKeyboard: false,
 
     /* Template root el height */
     elHeight: null
@@ -95,12 +87,6 @@ export default {
       this.showPassword = !this.showPassword;
     },
 
-    /* Sets layout when keyboard appears */
-    setTypeMode(mode) {
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
-      this.isKeyboard = mode;
-    },
-
     /**
      * Emits 'login' with given parameters
      * @param {object} params Login credentials
@@ -113,26 +99,10 @@ export default {
       } catch ({ message }) {
         this.$store.commit("PUSH_ERROR", message);
       }
-    },
-
-    /**
-     * Reacts to mobile keyboard toggling
-     * @param {number} innerHeight Affected window height
-     */
-    handleResize({ target: { innerHeight } }) {
-      if (innerHeight < this.elHeight) this.setTypeMode(true);
-      else this.setTypeMode(false);
     }
   },
-
   mounted() {
-    disableBodyScroll(window.document.body);
     this.elHeight = window.innerHeight;
-    window.addEventListener("resize", this.handleResize);
-  },
-
-  beforeDestroy() {
-    window.removeEventListener("resize", this.handleResize);
   }
 };
 </script>
