@@ -31,21 +31,29 @@ export default {
       /* eslint-disable-next-line */
       console.log('Show more')
     }
+  },
+  mounted() {
+    this.$el.addEventListener(
+      "touchmove",
+      function(e) {
+        e.preventDefault();
+      },
+      false
+    );
   }
 };
 </script>
 
 <style module lang="stylus">
   .header
+    touch-action manipulation
+    position relative
+    z-index 1000
     height 70px
     display grid
     text-align center
     grid-template-columns 60px 1fr 60px
     grid-column-gap 15px
-    position fixed
-    top 0
-    width 100%
-    z-index 1
     background-color #f5f7fa
     box-shadow 0 1px 10px rgba(0,0,0,.1)
 
