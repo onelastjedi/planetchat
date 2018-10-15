@@ -2,17 +2,7 @@
   <main id="app"
     class="app_mobile"
     v-if="isConnected"
-    :class="{ overlayed: isAppOverlayed }"
   >
-    <AppHeader v-if="isHeader" />
-    <notifier />
-    <full-screen-image-popup />
-    <add-new-contact-popup />
-    <weather-popup />
-    <create-group-popup />
-    <edit-group-popup />
-    <add-group-members-popup />
-    <user-added-popup />
     <router-view />
   </main>
 </template>
@@ -24,19 +14,6 @@ export default {
      * Resolves components asynchronously
      * @see {@link https://vuejs.org/v2/guide/components-dynamic-async.html|Async Components}
      */
-    AppHeader: () => import("@/desktop/components/common/AppHeader"),
-    AddNewContactPopup: () =>
-      import("@/desktop/components/popups/AddNewContactPopup"),
-    WeatherPopup: () => import("@/desktop/components/popups/WeatherPopup"),
-    CreateGroupPopup: () =>
-      import("@/desktop/components/popups/CreateGroupPopup"),
-    EditGroupPopup: () => import("@/desktop/components/popups/EditGroupPopup"),
-    AddGroupMembersPopup: () =>
-      import("@/desktop/components/popups/AddGroupMembersPopup"),
-    UserAddedPopup: () => import("@/desktop/components/popups/UserAddedPopup"),
-    FullScreenImagePopup: () =>
-      import("@/desktop/components/popups/FullScreenImagePopup"),
-    Notifier: () => import("@/shared/components/Notifier")
   },
   watch: {
     /**
@@ -50,16 +27,6 @@ export default {
     /* Socket connection status */
     isConnected() {
       return this.$store.state.isSocketConnected;
-    },
-
-    /* Is header displayed */
-    isHeader() {
-      return this.$route.meta.isHeader;
-    },
-
-    /* Is overlay visible */
-    isAppOverlayed() {
-      return this.$store.getters.isAnyPopupVisible;
     }
   },
   async beforeCreate() {
