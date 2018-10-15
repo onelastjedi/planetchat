@@ -37,7 +37,6 @@ export default {
     width 100%
     z-index 1
     background-color #f5f7fa
-    box-shadow 0 1px 10px rgba(0,0,0,.1)
 
     @media (max-height: 568px)
       height 50px
