@@ -40,8 +40,14 @@ export default {
     padding 0
 
     img
-      width 120px
+      width 100px
+
+      @media (max-height: 568px)
+        display none
 
     h1
       font-size 42px
+
+      @media (max-height: 568px)
+        font-size 30px
 </style>
