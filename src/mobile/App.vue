@@ -1,5 +1,7 @@
 <template>
-  <main id="app" class="app_mobile"
+  <main id="app"
+    :style="{height: elHeight + 'px'}"
+    class="app_mobile"
     v-if="isConnected"
     :class="{ overlayed: isAppOverlayed }"
   >
@@ -37,6 +39,10 @@ export default {
       import("@/desktop/components/popups/FullScreenImagePopup"),
     Notifier: () => import("@/shared/components/Notifier")
   },
+  data: () => ({
+    /* Template root el height */
+    elHeight: null
+  }),
   watch: {
     /**
      * Perform init action when socket connected
@@ -86,6 +92,9 @@ export default {
 
     /* Saves connection to store */
     this.$store.commit("SET_SOCKET_CONNECTION_STATE", true);
+  },
+  mounted() {
+    this.elHeight = window.innerHeight;
   }
 };
 </script>
