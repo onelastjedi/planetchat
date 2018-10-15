@@ -1,5 +1,5 @@
 <template>
-  <component v-bind:is="currentComponent" />
+  <component v-bind:is="currentComponent" v-bind="currentProps" />
 </template>
 
 <script>
@@ -15,6 +15,19 @@ export default {
       import("@/mobile/components/messages/ChatMessagesWrapper")
   },
   computed: {
+    groupId() {
+      return +this.$route.params.id;
+    },
+
+    group() {
+      return this.$store.getters.getGroupById(this.groupId);
+    },
+
+    currentProps() {
+      if (this.currentComponent === "chat-messages-wrapper")
+        return { group: this.group };
+    },
+
     currentComponent() {
       if (this.$route.path === "/") return "chat-groups-wrapper";
       return "chat-messages-wrapper";
