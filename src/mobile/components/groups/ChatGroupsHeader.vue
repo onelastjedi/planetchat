@@ -40,7 +40,7 @@ export default {
     box-shadow 0 1px 10px rgba(0,0,0,.1)
 
     @media (max-height: 568px)
-      height 60px
+      height 50px
 
     div
       display grid
@@ -63,5 +63,5 @@ export default {
 
       @media (max-height: 568px)
         font-size 18px
-        line-height 60px
+        line-height 50px
 </style>
