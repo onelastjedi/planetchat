@@ -31,8 +31,7 @@ export default {
   components: {
     ChatMessagesHeader: () =>
       import("@/mobile/components/messages/ChatMessagesHeader"),
-    ChatMessagesItem: () =>
-      import("@/mobile/components/messages/ChatMessagesItem"),
+    ChatMessagesItem: () => import("@/shared/components/ChatMessagesItem"),
     ChatMessagesInput: () =>
       import("@/mobile/components/messages/ChatMessagesInput")
   },
