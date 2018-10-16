@@ -43,8 +43,7 @@ export default {
   components: {
     ChatMessagesHeader: () =>
       import("@/desktop/components/messages/ChatMessagesHeader"),
-    ChatMessagesItem: () =>
-      import("@/desktop/components/messages/ChatMessagesItem"),
+    ChatMessagesItem: () => import("@/shared/components/ChatMessagesItem"),
     ChatMessagesInput: () =>
       import("@/desktop/components/messages/ChatMessagesInput"),
     Loader: () => import("@/shared/components/Loader"),
