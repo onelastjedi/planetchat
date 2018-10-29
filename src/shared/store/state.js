@@ -31,6 +31,9 @@ export default {
   /* Plans */
   plans: [],
 
+  /* Hardware */
+  hardware: [],
+
   /* Errors related */
   errors: []
 };
