@@ -86,6 +86,9 @@ export default {
       grid-template-columns 70px 1fr 65px
       grid-column-gap 15px
 
+      @media (max-height: 568px)
+        height 50px
+
       div
         display grid
         align-items center
@@ -115,6 +118,9 @@ export default {
       grid-gap 10px
       grid-template-rows 70px 70px 70px auto
       padding 20px 15px 0
+
+      @media (max-height: 568px)
+        height calc(100vh - 130px)
 
       .logout
         align-self end
