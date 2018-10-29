@@ -140,4 +140,11 @@ export default {
   SELECT_CONTACT: ({ currentUser }, { selected, uid }) =>
     Vue.set(getContactByUID(currentUser, uid), "selected", selected),
 
+
+  /**
+   * Plans related mutations
+   */
+  SET_PLANS(state, payload) {
+    state.plans = payload;
+  }
 };
