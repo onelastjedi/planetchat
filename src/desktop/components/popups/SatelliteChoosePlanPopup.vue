@@ -12,41 +12,16 @@
       </div>
       <div :class="$style.content">
         <div :class="$style.contentSlider">
-          <label :class="$style.checkboxContainer">
-            <input type="radio" name="plan">
-            <span :class="$style.checkmark" />
-            Lorem ipsum dolor
-          </label>
-          <label :class="$style.checkboxContainer">
-            <input type="radio" name="plan">
-            <span :class="$style.checkmark" />
-            Sit amet consectetur
-          </label>
-          <label :class="$style.checkboxContainer">
-            <input type="radio" name="plan">
-            <span :class="$style.checkmark" />
-            Sed do eiusmod
-          </label>
-          <label :class="$style.checkboxContainer">
-            <input type="radio" name="plan">
-            <span :class="$style.checkmark" />
-            Tempor incididunt
-          </label>
-          <label :class="$style.checkboxContainer">
-            <input type="radio" name="plan">
-            <span :class="$style.checkmark" />
-            Ut enim ad
-          </label>
-          <label :class="$style.checkboxContainer">
-            <input type="radio" name="plan">
-            <span :class="$style.checkmark" />
-            Duis aute irure
-          </label>
-          <label :class="$style.checkboxContainer">
-            <input type="radio" name="plan">
-            <span :class="$style.checkmark" />
-            Excepteur sint
-          </label>
+          <template v-for="(plan, index) in plans">
+            <label
+              :key="`plans-${index}`"
+              :class="$style.checkboxContainer"
+            >
+              <input type="radio" name="plan">
+              <span :class="$style.checkmark" />
+              {{ plan.name }}
+            </label>
+          </template>
         </div>
       </div>
       <div :class="$style.footer">
@@ -80,6 +55,9 @@ export default {
   computed: {
     isVisible() {
       return this.$store.state.popups[this.$options.name];
+    },
+    plans() {
+      return this.$store.state.plans;
     }
   },
   methods: {
