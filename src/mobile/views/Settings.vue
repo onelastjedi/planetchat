@@ -1,6 +1,11 @@
 <template>
   <div :class="$style.settings">
-    <div :class="$style.header">Settings</div>
+    <div :class="$style.header">
+      <div @click="goto('/')">
+        <i class="icon-left-arrow" />
+      </div>
+      <h3>Settings</h3>
+    </div>
     <div :class="$style.content">
       <router-link
         :to="{ path: '/settings/details' }"
@@ -59,6 +64,9 @@ export default {
   methods: {
     signOut() {
       this.$lib.logout();
+    },
+    goto(path) {
+      this.$router.push(path);
     }
   }
 };
@@ -68,12 +76,57 @@ export default {
   .settings
     position relative
 
+    .header
+      height 70px
+      text-align center
+      background-color #f5f7fa
+      font-weight 700
+      font-size 20px
+      display grid
+      grid-template-columns 70px 1fr 65px
+      grid-column-gap 15px
+
+      div
+        display grid
+        align-items center
+
+      h3
+        align-self center
+        color #2a2d31
+        font-weight 700
+        font-size 20px
+
+        @media (max-height: 568px)
+          font-size 18px
+
+      i
+        margin 0 auto
+        color #5997dc
+        font-size 24px
+        line-height 70px
+
+        @media (max-height: 568px)
+          font-size 18px
+          line-height 50px
+
     .content
       height calc(100vh - 190px)
       display grid
       grid-gap 10px
       grid-template-rows 70px 70px 70px auto
-      padding 0 15px
+      padding 20px 15px 0
+
+      .logout
+        align-self end
+
+        i[class^="icon-right-arrow"]
+          color #E8455F
+          background linear-gradient(0deg, #E8455F 0%, #E74B3D 100%)
+          -webkit-background-clip text
+          -webkit-text-fill-color transparent
+
+        span
+          background linear-gradient(0deg, #E8455F 0%, #E74B3D 100%)
 
       a
         display grid
@@ -113,24 +166,4 @@ export default {
 
     .privacy span, .about span
       background linear-gradient(0deg, #5997dc 0%, #56b9d6 100%)
-
-    .logout
-      align-self end
-
-      i[class^="icon-right-arrow"]
-        color #E8455F
-        background linear-gradient(0deg, #E8455F 0%, #E74B3D 100%)
-        -webkit-background-clip text
-        -webkit-text-fill-color transparent
-
-      span
-        background linear-gradient(0deg, #E8455F 0%, #E74B3D 100%)
-
-  .header
-    height 70px
-    padding-top 25px
-    text-align center
-    background-color #f5f7fa
-    font-weight 700
-    font-size 20px
 </style>
