@@ -23,7 +23,7 @@ export default {
     /* Provides data for router-link */
     links: [
       { to: "/", icon: "icon-chat" },
-      { to: "/location", icon: "icon-location-sharing" },
+      { to: "/location", icon: "icon-compass" },
       { to: "/weather", icon: "icon-weather" },
       { to: "/settings", icon: "icon-settings" }
     ]
