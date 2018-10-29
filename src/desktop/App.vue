@@ -90,7 +90,14 @@ export default {
       "deleteGroupById",
       "notification",
       "searchByName",
-      "getPrivacy"
+      "getPrivacy",
+
+      /* Plans */
+      "getPlansAll",
+
+      /* Hardware */
+      "createHardware",
+      "getHardwareByUserId"
     ]);
 
     /* Saves connection to store */
