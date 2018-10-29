@@ -22,7 +22,6 @@ export default new Router({
       component: loadView("mobile", "Home"),
       beforeEnter: requireAuth,
       meta: {
-        isHeader: true,
         isFooter: false,
         isNotifier: true
       }
@@ -33,7 +32,6 @@ export default new Router({
       component: loadView("mobile", "Home"),
       beforeEnter: requireAuth,
       meta: {
-        isHeader: true,
         isFooter: false,
         isNotifier: true
       }
@@ -44,7 +42,6 @@ export default new Router({
       component: loadView("mobile", "Home"),
       beforeEnter: requireAuth,
       meta: {
-        isHeader: true,
         isFooter: false,
         isNotifier: true
       }
@@ -55,7 +52,6 @@ export default new Router({
       component: loadView("mobile", "Settings"),
       beforeEnter: requireAuth,
       meta: {
-        isHeader: true,
         isFooter: false,
         isNotifier: true
       }
@@ -66,7 +62,6 @@ export default new Router({
       component: loadView("mobile", "Settings"),
       beforeEnter: requireAuth,
       meta: {
-        isHeader: true,
         isFooter: false,
         isNotifier: true
       }
@@ -77,7 +72,6 @@ export default new Router({
       component: loadView("mobile", "Settings"),
       beforeEnter: requireAuth,
       meta: {
-        isHeader: true,
         isFooter: false,
         isNotifier: true
       }
