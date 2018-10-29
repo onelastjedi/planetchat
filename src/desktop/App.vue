@@ -94,9 +94,11 @@ export default {
 
       /* Plans */
       "getPlansAll",
+      "getPlansMine",
 
       /* Hardware */
       "createHardware",
+      "hardwareAssociate",
       "getHardwareByUserId"
     ]);
 
