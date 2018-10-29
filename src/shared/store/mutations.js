@@ -146,5 +146,12 @@ export default {
    */
   SET_PLANS(state, payload) {
     state.plans = payload;
+  },
+
+  /**
+   * Hardware related mutations
+   */
+  ADD_HARDWARE(state, payload) {
+    state.hardware.push(payload);
   }
 };
