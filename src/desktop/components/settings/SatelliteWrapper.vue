@@ -12,7 +12,9 @@
         </styled-button>
       </div>
       <div :class="$style.add">
-        29084214, 2039840293, PlanetIOT hardware, Plan 12.50
+        <template v-for="(hw, index) in hardware">
+          <span :key="`hw-${index}`">imei: {{ hw.imei }}, serial: {{ hw.serial }}, billing date: {{ hw.billing_date }}</span>
+        </template>
       </div>
       <div :class="$style.footer">
         <div>
@@ -49,6 +51,11 @@ export default {
      * @see {@link https://vuejs.org/v2/guide/components-dynamic-async.html|Async Components}
      */
     StyledButton: () => import("@/shared/components/StyledButton")
+  },
+  computed: {
+    hardware() {
+      return this.$store.state.hardware;
+    }
   },
   methods: {
     openWizard(tabName) {
