@@ -28,6 +28,9 @@ export default {
     SatellitePaymentDetails: false
   },
 
+  /* Plans */
+  plans: [],
+
   /* Errors related */
   errors: []
 };
