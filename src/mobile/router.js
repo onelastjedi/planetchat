@@ -23,7 +23,8 @@ export default new Router({
       beforeEnter: requireAuth,
       meta: {
         isFooter: false,
-        isNotifier: true
+        isNotifier: true,
+        isNav: true
       }
     },
     {
@@ -43,17 +44,19 @@ export default new Router({
       beforeEnter: requireAuth,
       meta: {
         isFooter: false,
-        isNotifier: true
+        isNotifier: true,
+        isNav: false
       }
     },
     {
       path: "/settings",
       name: "settings",
-      component: loadView("mobile", "Settings"),
+      component: loadView("mobile", "Home"),
       beforeEnter: requireAuth,
       meta: {
         isFooter: false,
-        isNotifier: true
+        isNotifier: true,
+        isNav: true
       }
     },
     {
