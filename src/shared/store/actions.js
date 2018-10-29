@@ -16,10 +16,18 @@ export default {
       tag: "currentUser"
     });
 
+    /* Get user privacy settings */
     socket.emit("getPrivacy", {});
 
     /* Get current user contacts */
     socket.emit("getContacts", {});
+
+
+
+
+    socket.emit("getPlansAll", { cur: "USD" }),
+
+    socket.emit("getHardwareByUserId", { user_id: lib.currentUserUID });
   },
 
   addGroup: ({ commit }, group) => {
@@ -312,5 +320,19 @@ export default {
     if (typeof tag === "number") {
       commit("UPDATE_MEMBER", { user, gid: tag });
     }
+  },
+
+  /* Plans */
+  getPlansAll({ commit }, payload) {
+    commit("SET_PLANS", payload.plans);
+  },
+
+  /* Hardware */
+  createHardware({ commit }, payload) {
+    console.log(payload);
+  },
+
+  getHardwareByUserId({ commit }, payload) {
+    console.log(payload);
   }
 };
