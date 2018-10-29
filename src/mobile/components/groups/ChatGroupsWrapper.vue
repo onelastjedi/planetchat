@@ -10,7 +10,6 @@
         :group-id="group.gid"
       />
     </div>
-    <mobile-nav />
   </div>
 </template>
 
@@ -19,8 +18,7 @@ export default {
   components: {
     ChatGroupsHeader: () =>
       import("@/mobile/components/groups/ChatGroupsHeader"),
-    ChatGroupsItem: () => import("@/mobile/components/groups/ChatGroupsItem"),
-    MobileNav: () => import("@/mobile/components/common/MobileNav")
+    ChatGroupsItem: () => import("@/mobile/components/groups/ChatGroupsItem")
   },
   computed: {
     groups() {
