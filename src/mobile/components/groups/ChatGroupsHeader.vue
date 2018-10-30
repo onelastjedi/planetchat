@@ -36,7 +36,7 @@ export default {
     top 0
     width 100%
     z-index 1
-    background-color #f5f7fa
+    background-color #EBF1F5
 
     @media (max-height: 568px)
       height 50px
