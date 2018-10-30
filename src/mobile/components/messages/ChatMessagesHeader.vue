@@ -54,7 +54,7 @@ export default {
     text-align center
     grid-template-columns 60px 1fr 60px
     grid-column-gap 15px
-    background-color #f5f7fa
+    background-color #EBF1F5
     box-shadow 0 1px 10px rgba(0,0,0,.1)
 
     @media (max-height: 568px)
