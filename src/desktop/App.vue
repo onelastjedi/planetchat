@@ -99,6 +99,7 @@ export default {
       /* Hardware */
       "createHardware",
       "hardwareAssociate",
+      "hardwareDissasociate",
       "getHardwareByUserId"
     ]);
 
