@@ -67,7 +67,9 @@ export default {
       ]);
     },
     deactivate() {
-      console.log("Deactivate");
+      this.$socket.emit("hardwareDissasociate", {
+        serial: this.hardware[0].serial
+      });
     }
   }
 };
