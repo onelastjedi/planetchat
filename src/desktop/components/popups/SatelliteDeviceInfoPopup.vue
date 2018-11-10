@@ -12,9 +12,9 @@
       </div>
       <div :class="$style.content">
         <label>Your device IMEI number</label>
-        <input type="text" placeholder="Type Here..." />
+        <input v-model="hardware.imei" type="text" placeholder="Type Here..." />
         <label>Serial Number</label>
-        <input type="text" placeholder="Type here..." />
+        <input v-model="hardware.serial" type="text" placeholder="Type here..." />
       </div>
       <div :class="$style.footer">
         <div></div>
@@ -39,6 +39,12 @@ export default {
      */
     StyledButton: () => import("@/shared/components/StyledButton")
   },
+  data: () => ({
+    hardware: {
+      imei: null,
+      serial: null
+    }
+  }),
   computed: {
     isVisible() {
       return this.$store.state.popups[this.$options.name];
@@ -52,6 +58,15 @@ export default {
           writable: false
         })
       ]);
+    },
+    createHardware({ imei, serial }) {
+      if (imei && serial)
+        this.$socket.emit("createHardware", {
+          user_id: this.$lib.currentUserUID,
+          serial,
+          imei,
+          available: 0
+        });
     },
     changeSlide(tabName) {
       this.close();
