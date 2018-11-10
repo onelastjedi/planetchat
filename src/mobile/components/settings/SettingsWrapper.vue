@@ -1,12 +1,9 @@
 <template>
   <div :class="$style.settings">
     <div :class="$style.header">
-      <div @click="goto('/')">
-        <i class="icon-left-arrow" />
-      </div>
       <h3>Settings</h3>
     </div>
-    <div :class="$style.content">
+    <div :class="$style.content" :style="{height: wrapperHeight + 'px'}">
       <router-link
         :to="{ path: '/settings/details' }"
         :class="$style.details"
@@ -27,15 +24,39 @@
         :class="$style.privacy"
       >
         <span><i class="icon-pass" /></span>
-        Privacy
+        Privacy & Location Sharing
         <i class="icon-right-arrow" />
       </router-link>
       <router-link
-        :to="{ path: '/settings/info' }"
+        :to="{ path: '/settings/app' }"
+        :class="$style.app"
+      >
+        <span><i class="icon-weather-clear-day" /></span>
+        App Settings
+        <i class="icon-right-arrow" />
+      </router-link>
+      <router-link
+        :to="{ path: '/settings/satellite' }"
+        :class="$style.satellite"
+      >
+        <span><i class="icon-satellite" /></span>
+        Satellite Settings
+        <i class="icon-right-arrow" />
+      </router-link>
+      <router-link
+        :to="{ path: '/settings/about' }"
         :class="$style.about"
       >
         <span><i class="icon-info" /></span>
         About
+        <i class="icon-right-arrow" />
+      </router-link>
+      <router-link
+        :to="{ path: '/settings/privacy' }"
+        :class="$style.privacy"
+      >
+        <span><i class="icon-privacy-policy" /></span>
+        Privacy Policy
         <i class="icon-right-arrow" />
       </router-link>
       <a
@@ -55,14 +76,17 @@ export default {
   computed: {
     currentUser() {
       return this.$store.state.currentUser;
+    },
+
+    wrapperHeight() {
+      return window.innerHeight > 568
+        ? window.innerHeight - 140
+        : window.innerHeight - 100;
     }
   },
   methods: {
     signOut() {
       this.$lib.logout();
-    },
-    goto(path) {
-      this.$router.push(path);
     }
   }
 };
@@ -75,11 +99,15 @@ export default {
     .header
       height 70px
       text-align center
-      background-color #f5f7fa
+      width 100%
+      position fixed
+      z-index 1000
+      top 0
+      background-color #EBF1F5
       font-weight 700
       font-size 20px
       display grid
-      grid-template-columns 70px 1fr 65px
+      grid-template-columns 1fr
       grid-column-gap 15px
 
       @media (max-height: 568px)
@@ -109,14 +137,17 @@ export default {
           line-height 50px
 
     .content
-      height calc(100vh - 190px)
-      display grid
-      grid-gap 10px
-      grid-template-rows 70px 70px 70px auto
-      padding 20px 15px 0
+      // height calc(100vh - 190px)
+      // display grid
+      // grid-gap 10px
+      // grid-template-rows 70px 70px 70px auto
+      margin 50px 0 50px
+      overflow scroll
+      -webkit-overflow-scrolling touch
+      // height 570px
 
-      @media (max-height: 568px)
-        height calc(100vh - 130px)
+      // @media (max-height: 568px)
+      //   height calc(100vh - 130px)
 
       .logout
         align-self end
@@ -128,7 +159,7 @@ export default {
           -webkit-text-fill-color transparent
 
         span
-          background linear-gradient(0deg, #E8455F 0%, #E74B3D 100%)
+          background #e7465f
 
       a
         display grid
@@ -140,6 +171,7 @@ export default {
         background white
         padding-right 15px
         padding-left 10px
+        margin 10px 0
         color #111
         font-weight bold
         font-size 18px
@@ -166,6 +198,18 @@ export default {
           -webkit-background-clip text
           -webkit-text-fill-color transparent
 
-    .privacy span, .about span
-      background linear-gradient(0deg, #5997dc 0%, #56b9d6 100%)
+    .privacy span
+      background #4eccb3
+
+    .app span
+      background #efa471
+
+    .satellite span
+      background #6953ac
+
+    .privacy span
+      background #57AFD7
+
+    .about span
+      background #9dc446
 </style>
