@@ -27,7 +27,16 @@ export default {
       { to: "/weather", icon: "icon-weather" },
       { to: "/settings", icon: "icon-settings" }
     ]
-  })
+  }),
+  mounted() {
+    this.$el.addEventListener(
+      "touchmove",
+      function(e) {
+        e.preventDefault();
+      },
+      false
+    );
+  }
 };
 </script>
 
