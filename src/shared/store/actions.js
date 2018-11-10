@@ -6,7 +6,7 @@ export default {
   /**
    * Performs initial app loading
    */
-  init: () => {
+  init: ({ state }) => {
     /* Get current user groups (and chats) */
     socket.emit("getGroupAll", {});
 
@@ -22,12 +22,11 @@ export default {
     /* Get current user contacts */
     socket.emit("getContacts", {});
 
+    /* Get all plans */
+    socket.emit("getPlansAll", { cur: "USD" });
 
-
-
-    socket.emit("getPlansAll", { cur: "USD" }),
-
-    socket.emit("getHardwareByUserId", { user_id: lib.currentUserUID });
+    /* Get user hardware */
+    socket.emit("getHardwareByUserId", { user_id: lib.currentUserUID() });
   },
 
   addGroup: ({ commit }, group) => {
@@ -327,12 +326,33 @@ export default {
     commit("SET_PLANS", payload.plans);
   },
 
-  /* Hardware */
-  createHardware({ commit }, payload) {
+  getPlansMine({}, payload) {
     console.log(payload);
   },
 
-  getHardwareByUserId({ commit }, payload) {
+  /* Hardware */
+  createHardware({}, payload) {
+    socket.emit("hardwareAssociate", { serial: payload.serial })
+  },
+
+  hardwareAssociate() {
+    socket.emit("getHardwareByUserId", { user_id: lib.currentUserUID() });
+  },
+
+  hardwareDissasociate({}, payload) {
     console.log(payload);
+  },
+
+  getHardwareByUserId({ state, commit }, payload) {
+
+    payload.hw.forEach(hw => {
+      if (!state.hardware.some(obj => obj.hw_id === payload.hw_id))
+        commit("ADD_HARDWARE", hw);
+    })
+
+    const hw_id = state.hardware.map(obj => obj.hw_id)
+
+    /* Get current user plan */
+    socket.emit("getPlansMine", { hw_id })
   }
 };
