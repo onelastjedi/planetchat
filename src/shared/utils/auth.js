@@ -4,10 +4,7 @@
  * @author Anton Komarenko <mi3ta@sent.as>
  */
 import HTTP from "./http-common";
-import {
-  readBlobExifRotation,
-  returnRotatedImage
-} from "./load-image-common";
+import { readBlobExifRotation, returnRotatedImage } from "./load-image-common";
 
 /**
  * Sets session storage
@@ -141,9 +138,9 @@ export const currentUserSession = () =>
  * @returns {string} Authorized to fetch image from server
  */
 export const photoUrl = pid =>
-  `${
-    process.env.VUE_APP_API_BASE_URL
-  }/photo/${pid}?session=${currentUserSession()}&version=360thumb`;
+  `${localStorage.getItem(
+    "planetchat:rest"
+  )}/photo/${pid}?session=${currentUserSession()}&version=360thumb`;
 
 /**
  * Downloads image as blob, read EXIF and returns as base64String
@@ -176,4 +173,20 @@ export const getLocalRotatedPhotoAsBase64String = async fileOrBlob => {
   const rotatedImage = await returnRotatedImage(fileOrBlob, orientation);
 
   return rotatedImage;
+};
+
+/* Configurings API endpoints */
+export const getAppConfig = async () => {
+  try {
+    const {
+      data: { restAddress, restPort, socketAddress, socketPort }
+    } = await HTTP.get(process.env.VUE_APP_API_CONFIG_URL);
+
+    localStorage.setItem("planetchat:rest", `${restAddress}:${restPort}`);
+    localStorage.setItem("planetchat:ws", `${socketAddress}:${socketPort}`);
+
+    HTTP.defaults.baseURL = `${restAddress}:${restPort}`;
+  } catch (error) {
+    console.log(error);
+  }
 };

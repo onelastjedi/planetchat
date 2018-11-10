@@ -9,8 +9,8 @@ import store from "@/shared/store/store";
 
 class Socket {
   /* Construct socket.io object with given API's url */
-  constructor(API_URL) {
-    this.socket = io(API_URL, { autoConnect: false });
+  constructor() {
+    this.socket = null;
   }
 
   /**
@@ -19,6 +19,10 @@ class Socket {
    */
   @lib.log("Connected")
   async open(queue) {
+    this.socket = io(localStorage.getItem("planetchat:ws"), {
+      autoConnect: false
+    });
+
     /* Opens socket connection */
     this.socket.open();
 
@@ -94,4 +98,4 @@ class Socket {
 }
 
 /* Creates new class instance end export it */
-export default new Socket(process.env.VUE_APP_API_BASE_URL);
+export default new Socket();

@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.auth">
     <div :class="$style.wrapper">
-      <logo-header>Login to get started</logo-header>
+      <logo-header><h2>Login to get started</h2></logo-header>
       <form @submit.stop.prevent="handleSubmit({ account, password })">
         <div
           v-if="error"

@@ -1,14 +1,17 @@
 @import 'helpers/*'
 @import url('https://fonts.googleapis.com/css?family=Dosis:400,700')
 
+html
+  background-color #EBF1F5
+
 body
+  /* Disables pull-to-refresh but allows overscroll glow effects. */
+  /* https://developers.google.com/web/updates/2017/11/overscroll-behavior */
+  overscroll-behavior-y contain
   font-family 'Dosis', sans-serif
   font-size 16px
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-  width 100vw
-  height 100vh
-  min-width 360px
 
   a
     text-decoration none
@@ -19,14 +22,28 @@ body
 
 main
   position relative
+  min-width 360px
   height 100vh
 
   *
     ::-webkit-scrollbar
       width 8px
 
+    ::-webkit-scrollbar-button
+      display none
+
+    ::-webkit-scrollbar-track
+      display none
+
+    ::-webkit-scrollbar-corner
+      display none
+
     ::-webkit-scrollbar-thumb
       background-color #D3DBE4
+
+main.app_mobile
+  min-width 320px
+  height auto
 
 main.overlayed
   user-select none

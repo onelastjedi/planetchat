@@ -4,14 +4,17 @@
     :class="{ overlayed: isAppOverlayed }"
   >
     <AppHeader v-if="isHeader" />
-    <!-- <notifier /> -->
+    <notifier />
     <full-screen-image-popup />
     <add-new-contact-popup />
     <weather-popup />
     <create-group-popup />
     <edit-group-popup />
-    <!-- <add-group-members-popup /> -->
-    <!-- <user-added-popup /> -->
+    <add-group-members-popup />
+    <user-added-popup />
+    <satellite-device-info-popup />
+    <satellite-choose-plan-popup />
+    <satellite-payment-details />
     <router-view />
   </main>
 </template>
@@ -23,19 +26,33 @@ export default {
      * Resolves components asynchronously
      * @see {@link https://vuejs.org/v2/guide/components-dynamic-async.html|Async Components}
      */
-    AppHeader: () => import("@/desktop/components/AppHeader"),
+    AppHeader: () => import("@/desktop/components/common/AppHeader"),
     AddNewContactPopup: () =>
       import("@/desktop/components/popups/AddNewContactPopup"),
     WeatherPopup: () => import("@/desktop/components/popups/WeatherPopup"),
     CreateGroupPopup: () =>
       import("@/desktop/components/popups/CreateGroupPopup"),
     EditGroupPopup: () => import("@/desktop/components/popups/EditGroupPopup"),
-    // AddGroupMembersPopup: () =>
-    //   import("@/components/popups/AddGroupMembersPopup"),
-    // UserAddedPopup: () => import("@/components/popups/UserAddedPopup"),
+    AddGroupMembersPopup: () =>
+      import("@/desktop/components/popups/AddGroupMembersPopup"),
+    UserAddedPopup: () => import("@/desktop/components/popups/UserAddedPopup"),
     FullScreenImagePopup: () =>
-      import("@/desktop/components/popups/FullScreenImagePopup")
-    // Notifier: () => import("@/components/common/Notifier")
+      import("@/desktop/components/popups/FullScreenImagePopup"),
+    SatelliteDeviceInfoPopup: () =>
+      import("@/desktop/components/popups/SatelliteDeviceInfoPopup"),
+    SatelliteChoosePlanPopup: () =>
+      import("@/desktop/components/popups/SatelliteChoosePlanPopup"),
+    SatellitePaymentDetails: () =>
+      import("@/desktop/components/popups/SatellitePaymentDetails"),
+    Notifier: () => import("@/shared/components/Notifier")
+  },
+  watch: {
+    /**
+     * Perform init action when socket connected
+     */
+    isConnected() {
+      this.$store.dispatch("init");
+    }
   },
   computed: {
     /* Socket connection status */
@@ -54,6 +71,8 @@ export default {
     }
   },
   async beforeCreate() {
+    await this.$lib.getAppConfig();
+
     /**
      * Opens socket connection and defines
      * list of callbacks, that used in store
@@ -71,7 +90,17 @@ export default {
       "deleteGroupById",
       "notification",
       "searchByName",
-      "getPrivacy"
+      "getPrivacy",
+
+      /* Plans */
+      "getPlansAll",
+      "getPlansMine",
+
+      /* Hardware */
+      "createHardware",
+      "hardwareAssociate",
+      "hardwareDissasociate",
+      "getHardwareByUserId"
     ]);
 
     /* Saves connection to store */

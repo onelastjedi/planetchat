@@ -1,10 +1,22 @@
 <template>
-  <div :class="$style.header">
+  <div :class="[[$style.header], {[$style.mobile]: isMobile }]">
     <img src="@/shared/assets/logo.svg" />
     <h1>Planet<span>Chat</span></h1>
-    <h2><slot /></h2>
+    <slot />
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    isMobile: {
+      type: Boolean,
+      default: false
+    }
+  }
+};
+</script>
+
 
 <style module lang="stylus">
   .header
@@ -23,4 +35,19 @@
     h2
       margin-top 5px
       font-size 19px
+
+  .mobile
+    padding 0
+
+    img
+      width 100px
+
+      @media (max-height: 568px)
+        display none
+
+    h1
+      font-size 42px
+
+      @media (max-height: 568px)
+        font-size 30px
 </style>

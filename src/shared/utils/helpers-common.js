@@ -3,7 +3,7 @@
  * @since 0.1.0
  * @author Anton Komarenko <mi3ta@sent.as>
  */
-
+import MobileDetect from "mobile-detect";
 /**
  * Async/await version of setTimeout
  * @param {number} ms
@@ -43,4 +43,25 @@ export const asyncForEach = async (array, callback) => {
   for (let index = 0; index < array.length; index++) {
     await callback(array[index], index, array);
   }
+};
+
+/**
+ * Sly way to hide virtual keyboard on
+ * mobile devices
+ */
+export const hideVirtualKeyboard = () => {
+  if (
+    document.activeElement &&
+    document.activeElement.blur &&
+    typeof document.activeElement.blur === "function"
+  ) {
+    document.activeElement.blur();
+  }
+};
+
+/* Detect if app opened from mobile browser */
+export const isMobile = () => {
+  const device = new MobileDetect(window.navigator.userAgent);
+  if (device.mobile()) return true;
+  return false;
 };

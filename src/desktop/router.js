@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import { requireAuth, rejectAuth } from "@/shared/utils/router-hooks";
+import lib from "@/shared/utils/lib";
 
 Vue.use(Router);
 
@@ -9,7 +10,7 @@ const loadView = (folder, view) => {
     import(/* webpackChunkName: "view-[request]" */ `@/${folder}/views/${view}.vue`);
 };
 
-export default new Router({
+const router = new Router({
   mode: "history",
   /* eslint-disable-next-line */
   scrollBehavior(to, from, savedPosition) {
@@ -49,50 +50,87 @@ export default new Router({
         isNotifier: true
       }
     },
-    //     {
-    //       path: "/settings",
-    //       name: "settings",
-    //       component: loadView("Settings"),
-    //       beforeEnter: requireAuth,
-    //       meta: {
-    //         isFooter: false,
-    //         isNotifier: true
-    //       }
-    //     },
-    //     {
-    //       path: "/settings/details",
-    //       name: "details",
-    //       component: loadView("Details"),
-    //       beforeEnter: requireAuth,
-    //       meta: {
-    //         isFooter: false,
-    //         isNotifier: true
-    //       }
-    //     },
-    //     {
-    //       path: "/settings/privacy",
-    //       name: "privacy",
-    //       component: loadView("Privacy"),
-    //       beforeEnter: requireAuth,
-    //       meta: {
-    //         isFooter: false,
-    //         isNotifier: true
-    //       }
-    //     },
-    //     {
-    //       path: "/settings/info",
-    //       name: "info",
-    //       component: loadView("Info"),
-    //       beforeEnter: requireAuth,
-    //       meta: {
-    //         isFooter: false,
-    //         isNotifier: true
-    //       }
-    //     },
+    {
+      path: "/settings",
+      name: "settings",
+      component: loadView("desktop", "Settings"),
+      beforeEnter: requireAuth,
+      meta: {
+        isHeader: true,
+        isFooter: false,
+        isNotifier: true
+      }
+    },
+    {
+      path: "/settings/details",
+      name: "details",
+      component: loadView("desktop", "Settings"),
+      beforeEnter: requireAuth,
+      meta: {
+        isHeader: true,
+        isFooter: false,
+        isNotifier: true
+      }
+    },
+    {
+      path: "/settings/privacy",
+      name: "privacy",
+      component: loadView("desktop", "Settings"),
+      beforeEnter: requireAuth,
+      meta: {
+        isHeader: true,
+        isFooter: false,
+        isNotifier: true
+      }
+    },
+    {
+      path: "/settings/satellite",
+      name: "satellite",
+      component: loadView("desktop", "Settings"),
+      beforeEnter: requireAuth,
+      meta: {
+        isHeader: true,
+        isFooter: false,
+        isNotifier: true
+      }
+    },
     {
       path: "/login",
       name: "login",
-      component: loadView("shared", "Login"),
+      component: loadView("desktop", "Login"),
+      beforeEnter: rejectAuth,
+      meta: {
+        isHeader: false,
+        isFooter: true,
+        isNotifier: false
+      }
+    },
+    {
+      path: "/signup",
+      name: "signup",
+      component: loadView("desktop", "Signup"),
+      beforeEnter: rejectAuth,
+      meta: {
+        isHeader: false,
+        isFooter: true,
+        isNotifier: false
+      }
+    },
+    {
+      path: "/forgot",
+      name: "forgot",
+      component: loadView("desktop", "Forgot"),
+      beforeEnter: rejectAuth,
+      meta: {
+        isHeader: false,
+        isFooter: true,
+        isNotifier: false
+      }
+    },
+    {
+      path: "/reset",
+      name: "reset",
+      component: loadView("desktop", "Reset"),
       beforeEnter: rejectAuth,
       meta: {
         isHeader: false,
@@ -100,35 +138,13 @@ export default new Router({
         isNotifier: false
       }
     }
-    //     {
-    //       path: "/signup",
-    //       name: "signup",
-    //       component: loadView("Signup"),
-    //       beforeEnter: rejectAuth,
-    //       meta: {
-    //         isFooter: true,
-    //         isNotifier: false
-    //       }
-    //     },
-    //     {
-    //       path: "/forgot",
-    //       name: "forgot",
-    //       component: loadView("Forgot"),
-    //       beforeEnter: rejectAuth,
-    //       meta: {
-    //         isFooter: true,
-    //         isNotifier: false
-    //       }
-    //     },
-    //     {
-    //       path: "/reset",
-    //       name: "reset",
-    //       component: loadView("Reset"),
-    //       beforeEnter: rejectAuth,
-    //       meta: {
-    //         isFooter: true,
-    //         isNotifier: false
-    //       }
-    //     }
   ]
 });
+
+/* eslint-disable-next-line */
+router.beforeEach((to, from, next ) => {
+  if (lib.isMobile()) location.replace("http://m.planetchat.onelastjedi.com");
+  else next();
+});
+
+export default router;

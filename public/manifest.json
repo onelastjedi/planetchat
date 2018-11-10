@@ -1,0 +1,23 @@
+{
+  "name": "Planetchat",
+  "description": "",
+  "short_name": "Planetchat",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#56b9d6",
+  "start_url": "/",
+  "scope": "/",
+  "background_color": "#fff",
+  "icons": [
+    {
+      "src": "/img/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

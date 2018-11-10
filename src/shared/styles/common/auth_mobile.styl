@@ -1,0 +1,143 @@
+// https://developers.google.com/web/updates/2016/12/url-bar-resizing
+
+.auth_mobile
+  position relative
+  background-image url('@/shared/assets/pattern.png'),
+  linear-gradient(to top, #5997dc 0%, #56b9d6 100%)
+  background-repeat repeat, no-repeat
+  background-position 0 0, 100% 100%
+  background-size auto, cover
+  display grid
+  grid-template-rows auto 1fr 1fr
+
+.header
+  padding 30px 0
+  position relative
+
+  @media (max-height: 568px)
+    padding 15px 0
+
+.form.error
+  background transparent
+
+  .loginInput_mobile, .passwordInput_mobile
+    background-color #edd3d7
+
+  input
+    color #e83c59
+
+  i[class^="icon-user"], i[class^="icon-pass"]
+    color #c2596b
+
+  i[class^="icon-eye"]
+    color #8a0e2233
+
+  hr
+    background-color #e8c3c9
+
+.form
+  display block
+  width 80%
+  margin 0 auto
+
+  @media (max-width: 400px)
+    width 80%
+
+  input
+    background transparent
+    color white
+    padding-left 10px
+
+  hr
+    border none
+    height 1px
+    background #53aed9
+
+  ::-webkit-input-placeholder
+    color white
+
+  ::-moz-placeholder
+    color white
+
+  :-ms-input-placeholder
+    color white
+
+  :-moz-placeholder
+    color white
+
+  a
+    color white
+    text-align right
+    display block
+    padding 12px 0
+
+  p
+    padding 15px 0
+    text-align center
+    color white
+
+    a
+      display inline
+      font-weight bold
+
+.loginInput_mobile
+  background #7AC4F5
+  display grid
+  grid-template-columns 20px 1fr
+  padding 25px 20px
+  font-size 18px
+  border-top-left-radius 25px
+  border-top-right-radius 25px
+
+  i[class^="icon-user"]
+    line-height 20px
+    color #578FC0
+
+.passwordInput_mobile
+  position relative
+  display grid
+  grid-template-columns 20px 1fr
+  font-size 18px
+  padding 25px 20px
+  background #7AC4F5
+  border-bottom-left-radius 25px
+  border-bottom-right-radius 25px
+  margin-bottom 20px
+
+  i[class^="icon-pass"]
+    line-height 20px
+    color #578FC0
+
+  i[class^="icon-eye"]
+    color #578FC0
+    position absolute
+    top 20px
+    right 7px
+    font-size 15px
+    cursor pointer
+    padding 10px
+
+.error
+  display grid
+  align-items center
+  text-align center
+  color #e83c59
+  font-size 18px
+  height 56px
+  background-color #ffe3e8
+
+.footer_mobile_wrapper
+  background-color #f5f7fa
+  position relative
+  align-self end
+
+.footer_mobile
+  display grid
+  align-items center
+  text-align center
+  font-size 18px
+  height 56px
+
+  a
+    color #5898dc
+    font-weight 700
